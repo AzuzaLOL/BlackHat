@@ -217,7 +217,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6121518760755559539, guid: 169f5ee269de74f3c984bb367cd2ae5e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3037,12 +3037,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1242676405411119345, guid: 169f5ee269de74f3c984bb367cd2ae5e, type: 3}
   m_PrefabInstance: {fileID: 1480269353}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1524847352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2345610735203738704, guid: 169f5ee269de74f3c984bb367cd2ae5e, type: 3}
+  m_PrefabInstance: {fileID: 1480269353}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1524847355 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 666332061760985037, guid: 169f5ee269de74f3c984bb367cd2ae5e, type: 3}
   m_PrefabInstance: {fileID: 1480269353}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1524847352}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 393b715ad51a80d49b72a969dd58469d, type: 3}
@@ -3510,6 +3515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terminalDisplay: {fileID: 1817663574}
   terminal: {fileID: 2093891480}
+  infoPanel: {fileID: 400298400}
 --- !u!1001 &1858428752
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4040,7 +4046,8 @@ MonoBehaviour:
   - {fileID: 1022664916}
   - {fileID: 509575046}
   - {fileID: 688170012}
-  root: {fileID: 0}
+  root: {fileID: 1524847352}
+  infoPanel: {fileID: 400298400}
 --- !u!1001 &739944838915152806
 PrefabInstance:
   m_ObjectHideFlags: 0

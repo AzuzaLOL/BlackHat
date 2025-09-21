@@ -21,7 +21,7 @@ public class SystemNode : MonoBehaviour
         }
         else
         {
-            nodeName = "System_" + GameManager.SystemID;
+            nodeName = "system_" + GameManager.SystemID;
             GameManager.SystemID++;
         }
         nameText.text = nodeName;

@@ -5,6 +5,7 @@ public class Terminal : MonoBehaviour
 {
     public GameObject[] nodes;
     public GameObject root;
+    public InfoPanel infoPanel;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -21,6 +22,8 @@ public class Terminal : MonoBehaviour
 
     public void RegenerateNodes()
     {
+        infoPanel.SelectNode(root.GetComponent<SystemNode>());
+        
         for (int i = 0; i < nodes.Length; i++)
         {
             SystemNode node = nodes[i].GetComponent<SystemNode>();

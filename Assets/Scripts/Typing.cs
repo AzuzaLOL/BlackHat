@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class Typing : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Typing : MonoBehaviour
     private string prompt = "> ";
 
     public Terminal terminal;
+    public InfoPanel infoPanel;
 
     void Start()
     {
@@ -60,10 +62,39 @@ public class Typing : MonoBehaviour
         // Example: trigger in-game actions, start timers, etc.
 
         var splitInput = input.Split(" ");
-        
+
         if (splitInput[0] == "search")
         {
+            Debug.Log("Regenerating Nodes...");
             terminal.RegenerateNodes();
+        }
+        else if (splitInput[0] == "target")
+        {
+            Debug.Log("Targeting...");
+
+            // Check Root
+            if (splitInput[1] == "Root")
+            {
+                infoPanel.SelectNode(terminal.root.GetComponent<SystemNode>());
+            }
+            // Check nodes
+            else
+            {
+                for (int i = 0; i < terminal.nodes.Length; i++)
+                {
+                    SystemNode node = terminal.nodes[i].GetComponent<SystemNode>();
+                    if (node.nodeName == splitInput[1])
+                    {
+                        infoPanel.SelectNode(node);
+                        break;
+                    }
+                }
+            }
+            
+        }
+        else
+        {
+            Debug.Log("Command not found");
         }
         
     }

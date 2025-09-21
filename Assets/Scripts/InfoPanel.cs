@@ -8,8 +8,7 @@ public class InfoPanel : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        selectedNode.Select();
-        SetInfo(selectedNode);
+        SelectNode(selectedNode);
     }
 
     // Update is called once per frame
@@ -22,6 +21,14 @@ public class InfoPanel : MonoBehaviour
     {
         infoText.text = "Name: " + node.nodeName;
         infoText.text += "\nFirewall Level: " + node.firewall;
-        infoText.text += "\nReward: ???"; 
+        infoText.text += "\nReward: ???";
+    }
+
+    public void SelectNode(SystemNode node)
+    {
+        selectedNode.Deselect();
+        selectedNode = node;
+        selectedNode.Select();
+        SetInfo(selectedNode);
     }
 }
