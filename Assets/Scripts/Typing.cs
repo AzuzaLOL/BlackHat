@@ -7,6 +7,8 @@ public class Typing : MonoBehaviour
     private string currentInput = "";
     private string prompt = "> ";
 
+    public Terminal terminal;
+
     void Start()
     {
         terminalDisplay.text = prompt;
@@ -56,5 +58,13 @@ public class Typing : MonoBehaviour
         // You can handle the command however you want here.
         Debug.Log("Submitted command: " + input);
         // Example: trigger in-game actions, start timers, etc.
+
+        var splitInput = input.Split(" ");
+        
+        if (splitInput[0] == "search")
+        {
+            terminal.RegenerateNodes();
+        }
+        
     }
 }

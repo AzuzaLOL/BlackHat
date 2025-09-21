@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1242676405411119345}
   - component: {fileID: 1858230800922980252}
+  - component: {fileID: 666332061760985037}
   m_Layer: 5
   m_Name: SystemNode
   m_TagString: Untagged
@@ -47,6 +48,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2345610735203738704}
   m_CullTransparentMesh: 1
+--- !u!114 &666332061760985037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2345610735203738704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393b715ad51a80d49b72a969dd58469d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: System1
+  firewall: 1
+  reward: 5
+  selectedIcon: {fileID: 6121518760755559539}
+  isRoot: 0
+  nameText: {fileID: 4500448261282288404}
 --- !u!1 &4254759406691663052
 GameObject:
   m_ObjectHideFlags: 0
