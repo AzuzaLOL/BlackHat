@@ -47,7 +47,7 @@ public class Typing : MonoBehaviour
     {
         string command = currentInput.Trim();
 
-        // Call your command processing logic here
+        // Call command processing logic here
         ProcessCommand(command);
 
         // Clear input after submission
@@ -57,12 +57,12 @@ public class Typing : MonoBehaviour
 
     void ProcessCommand(string input)
     {
-        // You can handle the command however you want here.
+        // Handle the command
         Debug.Log("Submitted command: " + input);
-        // Example: trigger in-game actions, start timers, etc.
 
         var splitInput = input.Split(" ");
 
+        // Check command
         if (splitInput[0] == "search")
         {
             Debug.Log("Regenerating Nodes...");
@@ -72,12 +72,12 @@ public class Typing : MonoBehaviour
         {
             Debug.Log("Targeting...");
 
-            // Check Root
+            // Target Root
             if (splitInput[1] == "Root")
             {
                 infoPanel.SelectNode(terminal.root.GetComponent<SystemNode>());
             }
-            // Check nodes
+            // Target other nodes
             else
             {
                 for (int i = 0; i < terminal.nodes.Length; i++)
@@ -90,7 +90,7 @@ public class Typing : MonoBehaviour
                     }
                 }
             }
-            
+
         }
         else
         {
