@@ -73,7 +73,7 @@ public class Typing : MonoBehaviour
             Debug.Log("Targeting...");
 
             // Target Root
-            if (splitInput[1] == "Root")
+            if (splitInput[1] == "root")
             {
                 infoPanel.SelectNode(terminal.root.GetComponent<SystemNode>());
             }
@@ -90,7 +90,40 @@ public class Typing : MonoBehaviour
                     }
                 }
             }
-
+        }
+        else if (splitInput[0] == "bypass")
+        {
+            // Do not bypass if the node is already breached
+            if (infoPanel.selectedNode.breached)
+            {
+                Debug.Log("Bypass failed. Node already breached!");
+            }
+            else
+            {
+                Debug.Log("Bypassing...");
+                infoPanel.selectedNode.breached = true;
+                infoPanel.UpdateInfo();
+            }
+            
+        }
+        else if (splitInput[0] == "extract")
+        {
+            // Do not exctrat if node hasnt been breached yet
+            if (!infoPanel.selectedNode.breached)
+            {
+                Debug.Log("Exctraction failed. Node not breached!");
+            }
+            // Do not exctract if the node was already exctracted
+            else if (infoPanel.selectedNode.extracted)
+            {
+                Debug.Log("Exctraction failed. Node already extracted!");
+            }
+            else
+            {
+                Debug.Log("Extracting...");
+                infoPanel.selectedNode.extracted = true;
+                infoPanel.UpdateInfo();
+            }
         }
         else
         {

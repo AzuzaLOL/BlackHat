@@ -3,9 +3,17 @@ using TMPro;
 
 public class SystemNode : MonoBehaviour
 {
+    // Node Stats
     public string nodeName;
     public int firewall = 1;
+    public int encryption = 1;
     public int reward = 5;
+
+    // Node Progress
+    public bool breached = false;
+    public bool extracted = false;
+    
+
     public GameObject selectedIcon;
     public bool isRoot = false;
 
@@ -17,7 +25,7 @@ public class SystemNode : MonoBehaviour
     {
         if (isRoot)
         {
-            nodeName = "Root";
+            nodeName = "root";
         }
         else
         {

@@ -3,7 +3,10 @@ using TMPro;
 public class InfoPanel : MonoBehaviour
 {
     public SystemNode selectedNode;
-    public TMP_Text infoText;
+    public TMP_Text nameText;
+    public TMP_Text firewallText;
+    public TMP_Text encryptionText;
+    public TMP_Text rewardText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,9 +22,25 @@ public class InfoPanel : MonoBehaviour
 
     void SetInfo(SystemNode node)
     {
-        infoText.text = "Name: " + node.nodeName;
-        infoText.text += "\nFirewall Level: " + node.firewall;
-        infoText.text += "\nReward: ???";
+        nameText.text = "Name: " + node.nodeName;
+        firewallText.text = "Firewall:        " + node.firewall;
+
+        if (!node.breached)
+        {
+            encryptionText.text = "Encryption: ???";
+            rewardText.text = "Reward:     ???";
+        }
+        else
+        {
+            encryptionText.text = "Encryption: " + node.encryption;
+            rewardText.text = "Reward:     " + node.reward;
+        }
+
+    }
+
+    public void UpdateInfo()
+    {
+        SetInfo(selectedNode);
     }
 
     public void SelectNode(SystemNode node)
