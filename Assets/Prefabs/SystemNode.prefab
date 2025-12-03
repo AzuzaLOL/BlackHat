@@ -71,6 +71,11 @@ MonoBehaviour:
   selectedIcon: {fileID: 6121518760755559539}
   isRoot: 0
   nameText: {fileID: 4500448261282288404}
+  possibleIcons:
+  - {fileID: 4035490111460779689, guid: 3aae8c91e4d795c46af0a32e44cc3f27, type: 3}
+  - {fileID: 8953036915013785933, guid: b8bda66c23341cf4e9788ed8e5226cc6, type: 3}
+  - {fileID: 546478537704593225, guid: dc05003a98c38e04896a7bb5b2d1386f, type: 3}
+  - {fileID: 7743665440744609149, guid: 26172ee890a1f3c44abf23f1a8deb1d3, type: 3}
   icon: {fileID: 8684546730886216806}
   ps: {fileID: 0}
 --- !u!198 &3638361819226939252

@@ -20,6 +20,8 @@ public class SystemNode : MonoBehaviour
     public bool isRoot = false;
 
     public TMP_Text nameText;
+
+    public Sprite[] possibleIcons;
     public Image icon;
 
     public ParticleSystem ps;
@@ -39,6 +41,10 @@ public class SystemNode : MonoBehaviour
         {
             nodeName = "system_" + GameManager.SystemID;
             GameManager.SystemID++;
+
+            // Generate a random icon
+            int randomIndex = Random.Range(0, possibleIcons.Length); 
+            icon.sprite = possibleIcons[randomIndex];
         }
 
         // Set to default properties
@@ -48,6 +54,10 @@ public class SystemNode : MonoBehaviour
         nameText.text = nodeName;
         breached = false;
         extracted = false;
+
+        var main = ps.main;
+        main.startColor = new Color(1f, 1f, 1f);
+        ps.Play();
 
         // Node properties
         reward = Random.Range(1, 12);
@@ -68,6 +78,9 @@ public class SystemNode : MonoBehaviour
     public void Select()
     {
         selectedIcon.SetActive(true);
+        var main = ps.main;
+        main.startColor = new Color(1f, 1f, 1f);
+        ps.Play();
     }
 
     public void Deselect()
@@ -81,7 +94,7 @@ public class SystemNode : MonoBehaviour
         nameText.color = new Color(0f, 1f, 0f);
 
         var main = ps.main;
-        main.startColor = new Color(0f, 1f, 0f);
+        main.startColor = new Color(1f, 0.6f, 0f);
         ps.Play();
     }
 
@@ -92,7 +105,7 @@ public class SystemNode : MonoBehaviour
         GameManager.Balance += reward;
 
         var main = ps.main;
-        main.startColor = new Color(1f, 0f, 1f);
+        main.startColor = new Color(1f, 1f, 0f);
         ps.Play();
     }
 
