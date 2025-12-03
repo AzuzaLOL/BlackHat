@@ -22,6 +22,8 @@ public class Terminal : MonoBehaviour
 
     public void RegenerateNodes()
     {
+        // Currently regenerates root too
+        root.GetComponent<SystemNode>().RegenerateNode();
         infoPanel.SelectNode(root.GetComponent<SystemNode>());
         
         for (int i = 0; i < nodes.Length; i++)

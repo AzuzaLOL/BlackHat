@@ -12,6 +12,7 @@ public class Typing : MonoBehaviour
     public Terminal terminal;
     public InfoPanel infoPanel;
     public ConsoleText consoleText;
+    public BalanceText balanceText;
 
     void Start()
     {
@@ -129,6 +130,7 @@ public class Typing : MonoBehaviour
                 infoPanel.selectedNode.breached = true;
                 infoPanel.UpdateInfo();
                 consoleText.AddText("#7cff73", infoPanel.selectedNode.nodeName + " successfully bypassed!");
+                infoPanel.selectedNode.Bypass();
             }
             
         }
@@ -153,7 +155,9 @@ public class Typing : MonoBehaviour
                 
                 infoPanel.selectedNode.extracted = true;
                 infoPanel.UpdateInfo();
-                consoleText.AddText("#7cff73", infoPanel.selectedNode.reward + " successfully extracted from " + infoPanel.selectedNode.nodeName);
+                consoleText.AddText("#7cff73", "$" + infoPanel.selectedNode.reward + " successfully extracted from " + infoPanel.selectedNode.nodeName);
+                infoPanel.selectedNode.Extract();
+                balanceText.UpdateBalance();
             }
         }
         else
