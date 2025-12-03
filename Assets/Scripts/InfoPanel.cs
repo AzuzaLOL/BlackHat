@@ -22,18 +22,18 @@ public class InfoPanel : MonoBehaviour
 
     void SetInfo(SystemNode node)
     {
-        nameText.text = "Name: " + node.nodeName;
-        firewallText.text = "Firewall:        " + node.firewall;
+        nameText.text = "Name:              " + node.nodeName;
+        firewallText.text = "Firewall:                   " + node.firewall;
 
         if (!node.breached)
         {
-            encryptionText.text = "Encryption: ???";
-            rewardText.text = "Reward:     ???";
+            encryptionText.text = "Encryption:            ???";
+            rewardText.text = "Reward:                 ???";
         }
         else
         {
-            encryptionText.text = "Encryption: " + node.encryption;
-            rewardText.text = "Reward:     " + node.reward;
+            encryptionText.text = "Encryption:                   " + node.encryption;
+            rewardText.text = "Reward:                   " + node.reward;
         }
 
     }

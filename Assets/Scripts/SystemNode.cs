@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class SystemNode : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class SystemNode : MonoBehaviour
     public bool isRoot = false;
 
     public TMP_Text nameText;
+    public Image icon;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,6 +34,8 @@ public class SystemNode : MonoBehaviour
             nodeName = "system_" + GameManager.SystemID;
             GameManager.SystemID++;
         }
+        nameText.color = "orange";
+        icon.color = "orange";
         nameText.text = nodeName;
     }
 
@@ -55,4 +59,18 @@ public class SystemNode : MonoBehaviour
     {
         selectedIcon.SetActive(false);
     }
+
+    public void Extract()
+    {
+        icon.color = "#7cff73";
+        nameText.color = "#7cff73";
+    }
+
+    public void Bypass()
+    {
+        icon.color = "#ff00ffff";
+        nameText.color = "#ff00ffff";
+    }
+
+
 }
