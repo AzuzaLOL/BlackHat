@@ -102,7 +102,7 @@ public class SystemNode : MonoBehaviour
     {
         icon.color = new Color(1f, 0f, 1f);
         nameText.color = new Color(1f, 0f, 1f);
-        GameManager.Balance += reward;
+        GameManager.balance += reward;
 
         var main = ps.main;
         main.startColor = new Color(1f, 1f, 0f);

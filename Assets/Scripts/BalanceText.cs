@@ -6,7 +6,7 @@ public class BalanceText : MonoBehaviour
     public TMP_Text textObj;
     public ParticleSystem ps;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         textObj = GetComponent<TMP_Text>();
         ps = GetComponent<ParticleSystem>();
@@ -19,7 +19,11 @@ public class BalanceText : MonoBehaviour
     }
 
     public void UpdateBalance() {
-        textObj.text = "Balance: <color=#FFFF00>$" + GameManager.Balance + "</color>";
+        textObj.text = "Balance: <color=#FFFF00>$" + GameManager.balance + "</color>";
         ps.Play();
+    }
+
+    void OnEnable() {
+        textObj.text = "Balance: <color=#FFFF00>$" + GameManager.balance + "</color>";
     }
 }
