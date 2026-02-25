@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using System.Collections.Generic;
 
 public class Typing : MonoBehaviour
 {
@@ -81,13 +82,14 @@ public class Typing : MonoBehaviour
             consoleText.AddText("#ff4400", "Targeting Node...");
 
             // Check command format
-            if (splitInput.Length != 2) {
-                    consoleText.AddText("red", "Targeting failed. Invalid command format");
-                    consoleText.AddText("yellow", "Command format: 'target <name>'");
-                    return;
+            if (splitInput.Length != 2)
+            {
+                consoleText.AddText("red", "Targeting failed. Invalid command format");
+                consoleText.AddText("yellow", "Command format: 'target <name>'");
+                return;
             }
 
-        
+
             // Target Root
             if (splitInput[1] == "root")
             {
@@ -124,15 +126,54 @@ public class Typing : MonoBehaviour
                 Debug.Log("Bypass failed. Node already breached!");
                 consoleText.AddText("red", "Firewall bypass failed. Node already breached!");
             }
+            // Do not bypass if node was already failed
+            else if (infoPanel.selectedNode.hackFailed)
+            {
+                Debug.Log("Bypass failed. Hack already attempted!");
+                consoleText.AddText("red", "Bypass failed. Hack already attempted!");
+            }
             else
             {
-                
-                infoPanel.selectedNode.breached = true;
-                infoPanel.UpdateInfo();
-                consoleText.AddText("#7cff73", infoPanel.selectedNode.nodeName + " successfully bypassed!");
-                infoPanel.selectedNode.Bypass();
+                // Calculate if the node is bypassed based on level difference
+                // Add defaults to the result lise (default hack chances for equal levels)
+                List<bool> resultList = new List<bool>();
+                resultList.Add(true);
+                resultList.Add(true);
+                resultList.Add(false);
+
+                // Add true for each bypass level higher than firewall
+                for (int i = GameManager.bypassLevel - infoPanel.selectedNode.firewall; i > 0; i--)
+                {
+                    resultList.Add(true);
+                }
+
+                // Add false for each firewall level higher than bypass
+                for (int i = infoPanel.selectedNode.firewall - GameManager.bypassLevel; i > 0; i--)
+                {
+                    resultList.Add(false);
+                }
+
+                // Choose if hack succeeds or not
+                int chosenIndex = Random.Range(0, resultList.Count);
+
+                if (resultList[chosenIndex])
+                {
+                    // Bypass the node
+                    infoPanel.selectedNode.breached = true;
+                    infoPanel.UpdateInfo();
+                    consoleText.AddText("#7cff73", infoPanel.selectedNode.nodeName + " successfully bypassed!");
+                    infoPanel.selectedNode.Bypass();
+                }
+                else
+                {
+                    // Hack fails
+                    infoPanel.selectedNode.hackFailed = true;
+                    // Currently no infoPanel change for a failure
+                    // infoPanel.UpdateInfo();
+                    consoleText.AddText("#ff0000ff", "Bypassing the firewall from node: " + infoPanel.selectedNode.nodeName + " failed.");
+                    infoPanel.selectedNode.FailHack();
+                }
             }
-            
         }
         else if (splitInput[0] == "extract")
         {
@@ -150,14 +191,55 @@ public class Typing : MonoBehaviour
                 Debug.Log("Exctraction failed. Node already extracted!");
                 consoleText.AddText("red", "Extraction failed. Reward already extracted!");
             }
+            // Do not extract if node was already failed
+            else if (infoPanel.selectedNode.hackFailed)
+            {
+                Debug.Log("Extraction failed. Hack already attempted!");
+                consoleText.AddText("red", "Extraction failed. Hack already attempted!");
+            }
             else
             {
-                
-                infoPanel.selectedNode.extracted = true;
-                infoPanel.UpdateInfo();
-                consoleText.AddText("#7cff73", "$" + infoPanel.selectedNode.reward + " successfully extracted from " + infoPanel.selectedNode.nodeName);
-                infoPanel.selectedNode.Extract();
-                balanceText.UpdateBalance();
+                // Calculate if the node is extracted based on level difference
+                // Add defaults to the result lise (default hack chances for equal levels)
+                List<bool> resultList = new List<bool>();
+                resultList.Add(true);
+                resultList.Add(true);
+                resultList.Add(false);
+
+                // Add true for each extract level higher than encryption
+                for (int i = GameManager.extractLevel - infoPanel.selectedNode.encryption; i > 0; i--)
+                {
+                    resultList.Add(true);
+                }
+
+                // Add false for each encryption level higher than extract
+                for (int i = infoPanel.selectedNode.encryption - GameManager.extractLevel; i > 0; i--)
+                {
+                    resultList.Add(false);
+                }
+
+                // Choose if hack succeeds or not
+                int chosenIndex = Random.Range(0, resultList.Count);
+
+                if (resultList[chosenIndex])
+                {
+                    // Extract the node
+                    infoPanel.selectedNode.extracted = true;
+                    infoPanel.UpdateInfo();
+                    consoleText.AddText("#7cff73", "$" + infoPanel.selectedNode.reward + " successfully extracted from " + infoPanel.selectedNode.nodeName);
+                    infoPanel.selectedNode.Extract();
+                    balanceText.UpdateBalance();
+                }
+                else
+                {
+                    // Hack fails
+                    infoPanel.selectedNode.hackFailed = true;
+                    // Currently no infoPanel change for a failure
+                    // infoPanel.UpdateInfo();
+                    consoleText.AddText("#ff0000ff", "Extraction of reward from node: " + infoPanel.selectedNode.nodeName + " failed.");
+                    infoPanel.selectedNode.FailHack();
+                }
+
             }
         }
         else

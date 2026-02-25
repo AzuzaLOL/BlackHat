@@ -356,7 +356,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4129406186368586828}
-  - component: {fileID: 803433884637256622}
   m_Layer: 5
   m_Name: Upgrade
   m_TagString: Untagged
@@ -389,18 +388,6 @@ RectTransform:
   m_AnchoredPosition: {x: 2.159998, y: 273}
   m_SizeDelta: {x: 1723.6, y: 168.69}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &803433884637256622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3697372401668137271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3700ef86ac924e158c265fb740b9c1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4461768362331878046
 GameObject:
   m_ObjectHideFlags: 0

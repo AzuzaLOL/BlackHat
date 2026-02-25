@@ -13,6 +13,7 @@ public class SystemNode : MonoBehaviour
     // Node Progress
     public bool breached = false;
     public bool extracted = false;
+    public bool hackFailed = false;
     
 
     // Visuals
@@ -27,7 +28,7 @@ public class SystemNode : MonoBehaviour
     public ParticleSystem ps;
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // NODE SPAWNING
     void Awake()
     {
         ps = GetComponent<ParticleSystem>();
@@ -54,14 +55,41 @@ public class SystemNode : MonoBehaviour
         nameText.text = nodeName;
         breached = false;
         extracted = false;
+        hackFailed = false;
 
         var main = ps.main;
         main.startColor = new Color(1f, 1f, 1f);
         ps.Play();
 
-        // Node properties
-        reward = Random.Range(1, 12);
-        
+        // NODE PROPERTIES:
+        // Firewall and encryption within 2 levels of the player search level
+        int fwMin = GameManager.searchLevel - 2;
+        int fwMax = GameManager.searchLevel + 2;
+
+        int enMin = GameManager.searchLevel - 2;
+        int enMax = GameManager.searchLevel + 2;
+
+        // Clamp min levels
+        if (fwMin <=0) {
+            fwMin = 1;
+        }
+
+        if (enMin <=0) {
+            enMin = 1;
+        }
+
+        // Generate levels
+        firewall = Random.Range(fwMin, fwMax + 1);
+        encryption = Random.Range(enMin, enMax + 1);
+
+        // Generate reward based on combined node level
+        int totalLevel = firewall + encryption;
+        int rwMin = totalLevel * 2;
+        int rwMax = totalLevel * 4;
+
+        reward = Random.Range(rwMin, rwMax + 1);
+
+
     }
 
     // Update is called once per frame
@@ -98,6 +126,7 @@ public class SystemNode : MonoBehaviour
         ps.Play();
     }
 
+
     public void Extract()
     {
         icon.color = new Color(1f, 0f, 1f);
@@ -106,6 +135,16 @@ public class SystemNode : MonoBehaviour
 
         var main = ps.main;
         main.startColor = new Color(1f, 1f, 0f);
+        ps.Play();
+    }
+
+    public void FailHack()
+    {
+        icon.color = new Color(1f, 0f, 0f);
+        nameText.color = new Color(1f, 0f, 0f);
+
+        var main = ps.main;
+        main.startColor = new Color(1f, 0f, 0f);
         ps.Play();
     }
 
