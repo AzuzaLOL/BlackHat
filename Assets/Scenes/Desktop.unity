@@ -220,6 +220,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6224907655262546673, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2737061490664926285, guid: 1cff6a6e0b5044e4b8cf9eaad2b4f34f, type: 3}
+    - target: {fileID: 6224907655262546673, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7280861832513465895, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
       propertyPath: m_text
       value: Search
@@ -1268,6 +1276,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5713949042894306039, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713949042894306039, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 3.6262016
+      objectReference: {fileID: 0}
+    - target: {fileID: 6224907655262546673, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6267776989698670108, guid: d97f67bbeab7645fabf70a70de112f9c, type: 3}
+    - target: {fileID: 6224907655262546673, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7280861832513465895, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
       propertyPath: m_text
       value: Extract
@@ -1486,6 +1510,14 @@ PrefabInstance:
     - target: {fileID: 4461768362331878046, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
       propertyPath: m_Name
       value: Payments
+      objectReference: {fileID: 0}
+    - target: {fileID: 6224907655262546673, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8193301947959983040, guid: 2166188e15cfe9143b07ceca6818cccc, type: 3}
+    - target: {fileID: 6224907655262546673, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6780834338226985878, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
       propertyPath: m_text
@@ -2281,6 +2313,14 @@ PrefabInstance:
     - target: {fileID: 4129406186368586828, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6224907655262546673, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -365169085512895768, guid: db35a9e79a89943d581ce9439d8a0d3a, type: 3}
+    - target: {fileID: 6224907655262546673, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8423036393344994536, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
