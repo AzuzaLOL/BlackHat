@@ -5,7 +5,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameObject manager;
     
-    public static int SystemID = 1;
     public static int balance = 0;
 
     // Upgradable stats related to black market

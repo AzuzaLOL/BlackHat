@@ -40,8 +40,16 @@ public class SystemNode : MonoBehaviour
         }
         else
         {
-            nodeName = "system_" + GameManager.SystemID;
-            GameManager.SystemID++;
+            // Node Name
+            string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            int nameLength = Random.Range(3, 6);
+            nodeName = "";
+
+            for(int i = 0; i < nameLength; i++)
+            {
+                nodeName += alphabet[Random.Range(0, alphabet.Length)];
+            }
+
 
             // Generate a random icon
             int randomIndex = Random.Range(0, possibleIcons.Length); 
