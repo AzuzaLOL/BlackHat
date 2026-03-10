@@ -40,6 +40,7 @@ public class Antivirus : MonoBehaviour
 
         GameManager.moneyDrainAmount = 0;
         GameManager.moneyDrainTimer = 0;
+        GameManager.numHacksFailed = 0;
 
         issuesText.text = "<color=\"" + issuesColor + "\">" + issues + "</color> Issues Fixed";
     }
