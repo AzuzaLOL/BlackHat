@@ -805,6 +805,7 @@ GameObject:
   - component: {fileID: 351766617}
   - component: {fileID: 351766619}
   - component: {fileID: 351766618}
+  - component: {fileID: 351766620}
   m_Layer: 5
   m_Name: Antivirus
   m_TagString: Untagged
@@ -873,6 +874,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 351766616}
   m_CullTransparentMesh: 1
+--- !u!114 &351766620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351766616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c3084811376c44acbd7f6733f6669ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  issuesText: {fileID: 403631881}
 --- !u!224 &395815421 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3050049640789426641, guid: 0625359542f92444f9660cf294e33f3d, type: 3}
@@ -1879,7 +1893,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 693163157}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 351766620}
+        m_TargetAssemblyTypeName: Antivirus, Assembly-CSharp
+        m_MethodName: RunScan
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &693163157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2551,7 +2577,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1049972601}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 351766620}
+        m_TargetAssemblyTypeName: Antivirus, Assembly-CSharp
+        m_MethodName: DisinfectSystem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1049972601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2781,7 +2819,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3349821242155759704, guid: a3fd7887e3df54f8393563af0c8dec87, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3636839878262322432, guid: a3fd7887e3df54f8393563af0c8dec87, type: 3}
       propertyPath: selectedNode
@@ -4089,6 +4127,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TerminalButton
       objectReference: {fileID: 0}
+    - target: {fileID: 6080175208523423282, guid: 0625359542f92444f9660cf294e33f3d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6717348028838401192, guid: 0625359542f92444f9660cf294e33f3d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -4287,7 +4329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3349821242155759704, guid: a3fd7887e3df54f8393563af0c8dec87, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7428834854627208362, guid: a3fd7887e3df54f8393563af0c8dec87, type: 3}
       propertyPath: m_fontSize
