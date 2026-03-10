@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 public class BalanceText : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class BalanceText : MonoBehaviour
     {
         textObj = GetComponent<TMP_Text>();
         ps = GetComponent<ParticleSystem>();
+        GameManager.drainMoney.AddListener(UpdateBalance);
     }
 
     // Update is called once per frame
@@ -23,7 +25,9 @@ public class BalanceText : MonoBehaviour
         ps.Play();
     }
 
-    void OnEnable() {
+    void OnEnable()
+    {
         textObj.text = "Balance: <color=#FFFF00>$" + GameManager.balance + "</color>";
     }
+    
 }

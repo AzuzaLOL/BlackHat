@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
     public static GameObject manager;
-    
+
     public static int balance = 0;
 
     // Upgradable stats related to black market
@@ -21,9 +22,17 @@ public class GameManager : MonoBehaviour
     public static int searchLevel = 1;
     public static int searchCost = 50;
 
-    // Related to security center
+    // Related to VPN security center
     public static float vpnTimer = 0;
     public static bool forceHackFail = false;
+
+    // For Antivirus in security center
+    public static int numHacksFailed = 0;
+    public static int moneyDrainAmount = 0;
+    public static float moneyDrainTimer = 0;
+    public static float moneyDrainInterval = 1;
+    public const int HACKS_REQUIRED_FOR_MONEY_DRAIN = 5;
+    public static UnityEvent drainMoney = new UnityEvent();
 
 
 
@@ -52,9 +61,21 @@ public class GameManager : MonoBehaviour
         paymentTimer -= Time.deltaTime;
         vpnTimer += Time.deltaTime;
 
-        if (paymentTimer <= 0) {
+        if (paymentTimer <= 0)
+        {
             Debug.Log("Game Over!");
         }
+        
+        // Money Drain
+        if (moneyDrainAmount > 0)
+        {
+            moneyDrainTimer += Time.deltaTime;
+            if (moneyDrainTimer > moneyDrainInterval)
+            {
+                balance -= moneyDrainAmount;
+                moneyDrainTimer -= moneyDrainInterval;
+                drainMoney.Invoke();
+            }
+        }
     }
-    
 }

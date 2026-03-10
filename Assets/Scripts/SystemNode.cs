@@ -154,6 +154,15 @@ public class SystemNode : MonoBehaviour
         var main = ps.main;
         main.startColor = new Color(1f, 0f, 0f);
         ps.Play();
+
+
+        // Keep track of failed hacks and add money drain
+        GameManager.numHacksFailed += 1;
+
+        if (GameManager.numHacksFailed >= GameManager.HACKS_REQUIRED_FOR_MONEY_DRAIN)
+        {
+            GameManager.moneyDrainAmount += 1;
+        }
     }
 
 
