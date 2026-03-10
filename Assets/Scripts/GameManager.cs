@@ -22,6 +22,11 @@ public class GameManager : MonoBehaviour
     public static int searchLevel = 1;
     public static int searchCost = 50;
 
+    // Related to security center
+    public static float vpnTimer = 0;
+    public static bool forceHackFail = false;
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -43,9 +48,10 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(index);
     }
 
-    // Handle the payment timer
+    // Handle the payment and VPN timers
     void Update() {
         paymentTimer -= Time.deltaTime;
+        vpnTimer += Time.deltaTime;
 
         if (paymentTimer <= 0) {
             Debug.Log("Game Over!");
