@@ -1112,7 +1112,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60.2
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1332,7 +1332,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52.9
+  m_fontSize: 70.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1418,7 +1418,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.020429695, y: 0.09358428}
   m_AnchorMax: {x: 0.9795731, y: 0.8986237}
-  m_AnchoredPosition: {x: -0.0012512207, y: 0.6428299}
+  m_AnchoredPosition: {x: -0.0012817383, y: 0.6428299}
   m_SizeDelta: {x: -145.42, y: -18.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &491001344
@@ -1530,8 +1530,8 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
-  - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1539,14 +1539,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &519420029
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
 --- !u!114 &519420030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1657,6 +1649,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
 --- !u!1 &534210187
 GameObject:
   m_ObjectHideFlags: 0
@@ -2762,7 +2768,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.055660162, y: 0.57500005}
   m_AnchorMax: {x: 0.9136797, y: 0.6944899}
-  m_AnchoredPosition: {x: 0, y: -0.0012588501}
+  m_AnchoredPosition: {x: 0, y: -0.0012512207}
   m_SizeDelta: {x: -0.0000038146973, y: 0.0025177002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &822939861
@@ -2948,7 +2954,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 54.1
+  m_fontSize: 72
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3084,7 +3090,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 66.3
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4994,7 +5000,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3349821242155759704, guid: a3fd7887e3df54f8393563af0c8dec87, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3636839878262322432, guid: a3fd7887e3df54f8393563af0c8dec87, type: 3}
       propertyPath: selectedNode
@@ -5135,6 +5141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b01edb045f44bea89e6ca8a9439307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  terminalStatusText: {fileID: 0}
+  blackMarketStatusText: {fileID: 0}
+  SecurityCenterstatusText: {fileID: 0}
 --- !u!224 &1962601366 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4129406186368586828, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
@@ -5823,6 +5832,10 @@ PrefabInstance:
     - target: {fileID: 2469703438349059371, guid: a3fd7887e3df54f8393563af0c8dec87, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2905321394405990181, guid: a3fd7887e3df54f8393563af0c8dec87, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 401.63644
       objectReference: {fileID: 0}
     - target: {fileID: 3349821242155759704, guid: a3fd7887e3df54f8393563af0c8dec87, type: 3}
       propertyPath: m_Name
