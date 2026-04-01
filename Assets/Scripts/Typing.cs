@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
 using System.Collections.Generic;
+using FMODUnity;
 
 public class Typing : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Typing : MonoBehaviour
     public InfoPanel infoPanel;
     public ConsoleText consoleText;
     public BalanceText balanceText;
+    public StudioEventEmitter targetEmitter;
 
     void Start()
     {
@@ -124,6 +126,9 @@ public class Typing : MonoBehaviour
         {
             consoleText.AddText("#7cff73", "Root successfully targeted!");
             infoPanel.SelectNode(terminal.root.GetComponent<SystemNode>());
+
+            // Audio for Targeting
+            targetEmitter.Play();
         }
         // Target other nodes
         else
@@ -137,6 +142,10 @@ public class Typing : MonoBehaviour
                 {
                     infoPanel.SelectNode(node);
                     consoleText.AddText("#7cff73", infoPanel.selectedNode.nodeName + " successfully targeted!");
+
+                    // Audio for Targeting
+                    targetEmitter.Play();
+
                     return;
                 }
             }
