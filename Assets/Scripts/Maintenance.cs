@@ -5,6 +5,7 @@ public class Maintenance : MonoBehaviour
 {
     const float SINGLE_APP_REPAIR_TIME = 2f;
     const float ALL_APP_REPAIR_TIME = 5f;
+    private bool isRepairing = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -43,6 +44,8 @@ public class Maintenance : MonoBehaviour
 
                 // Repair the app
                 GameManager.isTerminalWorking = true;
+                isRepairing = false;
+
                 Debug.Log("Terminal Repaired.");
                 break;
 
@@ -60,6 +63,8 @@ public class Maintenance : MonoBehaviour
 
                 // Repair the app
                 GameManager.isBlackMarketWorking = true;
+                isRepairing = false;
+
                 Debug.Log("Black Market Repaired.");
                 break;
             
@@ -77,6 +82,8 @@ public class Maintenance : MonoBehaviour
 
                 // Repair the app
                 GameManager.isSecurityCenterWorking = true;
+                isRepairing = false;
+
                 Debug.Log("Security Center Repaired.");
                 break;
 
@@ -92,10 +99,12 @@ public class Maintenance : MonoBehaviour
                     yield return null;
                 }
 
-                // Repair the app
+                // Repair the apps
                 GameManager.isTerminalWorking = true;
                 GameManager.isBlackMarketWorking = true;
                 GameManager.isSecurityCenterWorking = true;
+                isRepairing = false;
+
                 Debug.Log("All Apps Repaired.");
                 break;
 
@@ -105,7 +114,13 @@ public class Maintenance : MonoBehaviour
     // For Starting the Coroutine to repair apps
     public void RepairApp(int index)
     {
-        StartCoroutine(RepairAppCoroutine(index));
+        // Only Repair if not already repairing.
+        if (!isRepairing)
+        {
+            isRepairing = true;
+            StartCoroutine(RepairAppCoroutine(index));
+        }
+        
     }
 
     
