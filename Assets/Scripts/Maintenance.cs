@@ -1,22 +1,24 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
+using TMPro;
 
 public class Maintenance : MonoBehaviour
 {
+    // Repair Variables
     const float SINGLE_APP_REPAIR_TIME = 2f;
     const float ALL_APP_REPAIR_TIME = 5f;
     private bool isRepairing = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    // App Status Text
+    public TMP_Text terminalStatusText;
+    public TMP_Text blackMarketStatusText;
+    public TMP_Text SecurityCenterstatusText;
+    
 
-    // Update is called once per frame
-    void Update()
+    void Awake()
     {
-
+        GameManager.updateAppStatus.AddListener(UpdateAppStatus);
     }
 
     // For repairing apps
@@ -123,7 +125,39 @@ public class Maintenance : MonoBehaviour
         
     }
 
-    
+    // For Updating the App Status Text Panel
+    void UpdateAppStatus()
+    {
+        // Terminal
+        if (GameManager.isTerminalWorking)
+        {
+            terminalStatusText.text = "<color=\"green\">Terminal</color> ------------ <color=\"green\">Good</color>";
+        }
+        else
+        {
+            terminalStatusText.text ="<color=\"green\">Terminal</color> ------------ <color=\"red\">Down</color>";
+        }
+
+        // Black Market
+        if (GameManager.isBlackMarketWorking)
+        {
+            blackMarketStatusText.text = "<color=#ff00ff>Black Market</color> ------- <color=\"green\">Good</color>";
+        }
+        else
+        {
+            blackMarketStatusText.text = "<color=#ff00ff>Black Market</color> ------- <color=\"red\">Down</color>";
+        }
+        
+        // Security Center
+        if (GameManager.isSecurityCenterWorking)
+        {
+            SecurityCenterstatusText.text = "<color=#00ffff>Security Center</color> ---- <color=\"green\">Good</color>";
+        }
+        else
+        {
+            SecurityCenterstatusText.text = "<color=#00ffff>Security Center</color> ---- <color=\"red\">Down</color>";
+        }
+    }
     
     
 }

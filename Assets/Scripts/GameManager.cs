@@ -38,6 +38,10 @@ public class GameManager : MonoBehaviour
     public static bool isTerminalWorking = true;
     public static bool isBlackMarketWorking = true;
     public static bool isSecurityCenterWorking = true;
+    public static UnityEvent updateAppStatus = new UnityEvent();
+
+    public static float maintenanceEventTimer = 0;
+    public static float maintenanceEventInterval = 5;
 
 
 
@@ -62,16 +66,19 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(index);
     }
 
-    // Handle the payment and VPN timers
-    void Update() {
+
+    void Update()
+    {
+        // Handle the payment and VPN timers
         paymentTimer -= Time.deltaTime;
         vpnTimer += Time.deltaTime;
 
         if (paymentTimer <= 0)
         {
+            // Game Ends
             Debug.Log("Game Over!");
         }
-        
+
         // Money Drain
         if (moneyDrainAmount > 0)
         {
@@ -83,5 +90,23 @@ public class GameManager : MonoBehaviour
                 drainMoney.Invoke();
             }
         }
+
+
+        // Timed Events
+        maintenanceEventTimer += Time.deltaTime;
+        if (maintenanceEventTimer >= maintenanceEventInterval)
+        {
+            // Trigger the maintenence event
+            MaintenanceEvent();
+            maintenanceEventTimer = 0;
+        }
+    }
+
+    // Maintenance Event
+    void MaintenanceEvent()
+    {
+        // Choose an app to go down
+        int appIndex = Random.Range(0, 4);
+
     }
 }
