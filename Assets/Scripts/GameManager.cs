@@ -34,6 +34,12 @@ public class GameManager : MonoBehaviour
     public const int HACKS_REQUIRED_FOR_MONEY_DRAIN = 5;
     public static UnityEvent drainMoney = new UnityEvent();
 
+    // App status for Maintenance
+    public static bool isTerminalWorking = true;
+    public static bool isBlackMarketWorking = true;
+    public static bool isSecurityCenterWorking = true;
+
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
