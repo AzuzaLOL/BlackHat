@@ -8,7 +8,7 @@ public class GameplayAudioManager : MonoBehaviour
     [FMODUnity.ParamRef]
     public string paymentTimerParam;
 
-    void Awake()
+    void Start()
     {
         gameplayEmitter.Play();
     }
@@ -21,7 +21,7 @@ public class GameplayAudioManager : MonoBehaviour
 
     public void UpdateTimerParam()
     {
-        gameplayEmitter.SetParameter(paymentTimerParam, GameManager.paymentTimer);
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName(paymentTimerParam, GameManager.paymentTimer);
     }
 
 }

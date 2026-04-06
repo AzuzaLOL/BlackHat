@@ -2427,7 +2427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99179d68630b446679942b09e87b4032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameplayAudioManager: {fileID: 0}
+  gameplayAudioManager: {fileID: 1377287281}
 --- !u!1 &693163154
 GameObject:
   m_ObjectHideFlags: 0
@@ -4555,7 +4555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameplayEmitter: {fileID: 1377287280}
-  paymentTimerParam: 
+  paymentTimerParam: ransom_timer
 --- !u!1001 &1384386717
 PrefabInstance:
   m_ObjectHideFlags: 0
