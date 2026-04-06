@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static int balance = 0;
 
     // Upgradable stats related to black market
-    public static float paymentTimer = 300;
+    public static float paymentTimer = 70;
     public static int paymentCost = 300;
     public static int numberPayments = 0;
 
