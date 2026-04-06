@@ -15,7 +15,12 @@ public class Typing : MonoBehaviour
     public InfoPanel infoPanel;
     public ConsoleText consoleText;
     public BalanceText balanceText;
+
+    // Audio
     public StudioEventEmitter targetEmitter;
+    public StudioEventEmitter enter_backspace;
+    public StudioEventEmitter space;
+    public StudioEventEmitter key;
 
     void Start()
     {
@@ -30,18 +35,28 @@ public class Typing : MonoBehaviour
             {
                 if (currentInput.Length > 0)
                     currentInput = currentInput.Substring(0, currentInput.Length - 1);
+                
+                // Audio
+                enter_backspace.Play();
             }
             else if (c == '\n' || c == '\r') // Enter/Return
             {
                 SubmitInput();
+
+                // Audio
+                enter_backspace.Play();
             }
             else if (c == ' ') // Space
             {
-                
+                // Audio
+                space.Play();
             }
             else
             {
                 currentInput += c;
+
+                // Audio
+                key.Play();
             }
 
             UpdateDisplay();
