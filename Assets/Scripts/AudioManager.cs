@@ -3,15 +3,15 @@ using FMODUnity;
 
 public class AudioManager : MonoBehaviour
 {
-    public static StudioEventEmitter gameplayEmitter;
-    public static StudioEventEmitter startEmitter;
+    public StudioEventEmitter gameplayEmitter;
+    public StudioEventEmitter startEmitter;
 
     [FMODUnity.ParamRef]
-    public string game_start;
+    public string gameStartParam;
 
     void Awake()
     {
-        
+        startEmitter.Play();
     }
 
     // Update is called once per frame
@@ -20,8 +20,10 @@ public class AudioManager : MonoBehaviour
         
     }
 
+    // START GAMEPLAY
     public void startGame()
     {
-        game_start = "1";
+        startEmitter.SetParameter(gameStartParam, 1);
+        // startEmitter.Stop();
     }
 }
