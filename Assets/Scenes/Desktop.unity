@@ -4556,6 +4556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameplayEmitter: {fileID: 1377287280}
   paymentTimerParam: ransom_timer
+  vpnParam: VPN_Level
 --- !u!1001 &1384386717
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6287,6 +6288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vpnTimerText: {fileID: 455770451}
   IPText: {fileID: 906469141}
+  audioManager: {fileID: 1377287281}
 --- !u!1 &2093891478 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3349821242155759704, guid: a3fd7887e3df54f8393563af0c8dec87, type: 3}
