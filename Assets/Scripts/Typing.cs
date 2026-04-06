@@ -35,6 +35,10 @@ public class Typing : MonoBehaviour
             {
                 SubmitInput();
             }
+            else if (c == ' ') // Space
+            {
+                
+            }
             else
             {
                 currentInput += c;
