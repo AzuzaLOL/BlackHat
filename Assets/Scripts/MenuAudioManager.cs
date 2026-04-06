@@ -22,6 +22,6 @@ public class MenuAudioManager : MonoBehaviour
     // START GAMEPLAY
     public void startGame()
     {
-        startEmitter.SetParameter(gameStartParam, 1);
+         FMODUnity.RuntimeManager.StudioSystem.setParameterByName(gameStartParam, 1);
     }
 }
