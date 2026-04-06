@@ -2427,6 +2427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99179d68630b446679942b09e87b4032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameplayAudioManager: {fileID: 0}
 --- !u!1 &693163154
 GameObject:
   m_ObjectHideFlags: 0
@@ -2724,7 +2725,6 @@ GameObject:
   m_Component:
   - component: {fileID: 755934755}
   - component: {fileID: 755934758}
-  - component: {fileID: 755934759}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -2767,21 +2767,6 @@ MonoBehaviour:
   - Master
   CollisionTag: 
   PreloadSamples: 0
---- !u!114 &755934759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 755934754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e6b47b73872c9242bec332f042a3e47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameplayEmitter: {fileID: 1377287280}
-  startEmitter: {fileID: 517688743}
-  gameStartParam: game_start
 --- !u!1 &778493862
 GameObject:
   m_ObjectHideFlags: 0
@@ -4503,6 +4488,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1377287279}
   - component: {fileID: 1377287280}
+  - component: {fileID: 1377287281}
   m_Layer: 0
   m_Name: Gameplay
   m_TagString: Untagged
@@ -4556,6 +4542,20 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!114 &1377287281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377287278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 562d17be36e143547b981757e61a9ea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameplayEmitter: {fileID: 1377287280}
+  paymentTimerParam: 
 --- !u!1001 &1384386717
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5336,7 +5336,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 755934759}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: startGame
         m_Mode: 1

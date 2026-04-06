@@ -4,8 +4,6 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameObject manager;
-
     public static int balance = 0;
 
     // Upgradable stats related to black market
@@ -43,28 +41,13 @@ public class GameManager : MonoBehaviour
     public static float maintenanceEventTimer = 0;
     public static float maintenanceEventInterval = 5;
 
+    // Audio Manager
+    public GameplayAudioManager gameplayAudioManager;
 
 
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        if (manager == null)
-        {
-            manager = gameObject;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-    }
-
-    public static void SwitchScene(int index)
-    {
-        SceneManager.LoadScene(index);
+        
     }
 
 
@@ -73,6 +56,9 @@ public class GameManager : MonoBehaviour
         // Handle the payment and VPN timers
         paymentTimer -= Time.deltaTime;
         vpnTimer += Time.deltaTime;
+
+        // Timer for Audio
+        gameplayAudioManager.UpdateTimerParam();
 
         if (paymentTimer <= 0)
         {
