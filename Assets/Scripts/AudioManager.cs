@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
     public static StudioEventEmitter startEmitter;
 
     [FMODUnity.ParamRef]
-    public float game_start;
+    public string game_start;
 
     void Awake()
     {
@@ -22,6 +22,6 @@ public class AudioManager : MonoBehaviour
 
     public void startGame()
     {
-        game_start = 1f;
+        game_start = "1";
     }
 }
