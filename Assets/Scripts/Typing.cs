@@ -58,6 +58,8 @@ public class Typing : MonoBehaviour
             }
             else if (c == ' ') // Space
             {
+                currentInput += c;
+                
                 // Audio
                 space.Play();
             }
