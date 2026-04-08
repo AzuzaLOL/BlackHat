@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static int balance = 0;
 
     // Upgradable stats related to black market
-    public static float paymentTimer = 70;
+    public static float paymentTimer = 300;
     public static int paymentCost = 300;
     public static int numberPayments = 0;
 
@@ -93,7 +93,26 @@ public class GameManager : MonoBehaviour
     void MaintenanceEvent()
     {
         // Choose an app to go down
-        int appIndex = Random.Range(0, 4);
+        int appIndex = Random.Range(0, 3);
 
+        // Emit the event for chosen app
+        switch(appIndex)
+        {
+            // Terminal
+            case 0:
+                isTerminalWorking = false;
+                updateAppStatus.Invoke();
+                break;
+            // Black Market
+            case 1:
+                isBlackMarketWorking = false;
+                updateAppStatus.Invoke();
+                break;
+            // Security Center
+            case 2:
+                isSecurityCenterWorking = false;
+                updateAppStatus.Invoke();
+                break;
+        }
     }
 }

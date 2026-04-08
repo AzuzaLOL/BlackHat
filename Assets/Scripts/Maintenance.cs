@@ -49,6 +49,7 @@ public class Maintenance : MonoBehaviour
                 isRepairing = false;
 
                 Debug.Log("Terminal Repaired.");
+                GameManager.updateAppStatus.Invoke();
                 break;
 
             // Black Market
@@ -68,6 +69,7 @@ public class Maintenance : MonoBehaviour
                 isRepairing = false;
 
                 Debug.Log("Black Market Repaired.");
+                GameManager.updateAppStatus.Invoke();
                 break;
             
             // Security Center
@@ -87,6 +89,7 @@ public class Maintenance : MonoBehaviour
                 isRepairing = false;
 
                 Debug.Log("Security Center Repaired.");
+                GameManager.updateAppStatus.Invoke();
                 break;
 
             // All apps
@@ -108,6 +111,7 @@ public class Maintenance : MonoBehaviour
                 isRepairing = false;
 
                 Debug.Log("All Apps Repaired.");
+                GameManager.updateAppStatus.Invoke();
                 break;
 
         }
