@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TerminalStatusManager : MonoBehaviour
+public class MarketStatusManager : MonoBehaviour
 {
     public GameObject[] objectsToDisable;
     public GameObject notWorkingStaticCoverImage;
@@ -10,13 +10,13 @@ public class TerminalStatusManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GameManager.updateAppStatus.AddListener(IsTerminalWorking);
+        GameManager.updateAppStatus.AddListener(IsBlackMarketWorking);
     }
     
-    // For recieving the terminal down event from GameManager
-    void IsTerminalWorking()
+    // For recieving the market down event from GameManager
+    void IsBlackMarketWorking()
     {
-        if (!GameManager.isTerminalWorking)
+        if (!GameManager.isBlackMarketWorking)
         {
             foreach (GameObject obj in objectsToDisable)
             {

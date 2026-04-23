@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TerminalStatusManager : MonoBehaviour
+public class SecurityStatusManager : MonoBehaviour
 {
     public GameObject[] objectsToDisable;
     public GameObject notWorkingStaticCoverImage;
@@ -10,13 +10,13 @@ public class TerminalStatusManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GameManager.updateAppStatus.AddListener(IsTerminalWorking);
+        GameManager.updateAppStatus.AddListener(IsSecurityCenterWorking);
     }
     
-    // For recieving the terminal down event from GameManager
-    void IsTerminalWorking()
+    // For recieving the market down event from GameManager
+    void IsSecurityCenterWorking()
     {
-        if (!GameManager.isTerminalWorking)
+        if (!GameManager.isSecurityCenterWorking)
         {
             foreach (GameObject obj in objectsToDisable)
             {
