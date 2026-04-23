@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     // Related to VPN security center
     public static float vpnTimer = 0;
     public static bool forceHackFail = false;
+    public GameObject vpnWarningSign;
 
     // For Antivirus in security center
     public static int numHacksFailed = 0;
@@ -56,6 +57,15 @@ public class GameManager : MonoBehaviour
         // Handle the payment and VPN timers
         paymentTimer -= Time.deltaTime;
         vpnTimer += Time.deltaTime;
+
+        if (vpnTimer > 60 || moneyDrainAmount > 0)
+        {
+            vpnWarningSign.SetActive(true);
+        }
+        else
+        {
+            vpnWarningSign.SetActive(false);
+        }
 
         // Timer for Audio
         gameplayAudioManager.UpdateTimerParam();

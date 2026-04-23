@@ -14,6 +14,9 @@ public class Maintenance : MonoBehaviour
     public TMP_Text terminalStatusText;
     public TMP_Text blackMarketStatusText;
     public TMP_Text SecurityCenterstatusText;
+
+    // Warning Sign
+    public GameObject warningSign;
     
 
     void Awake()
@@ -160,6 +163,16 @@ public class Maintenance : MonoBehaviour
         else
         {
             SecurityCenterstatusText.text = "<color=#00ffff>Security Center</color> ---- <color=\"red\">Down</color>";
+        }
+
+        // Update warning icon
+        if (!GameManager.isSecurityCenterWorking || !GameManager.isBlackMarketWorking || !GameManager.isTerminalWorking)
+        {
+            warningSign.SetActive(true);
+        }
+        else
+        {
+            warningSign.SetActive(false);
         }
     }
     
