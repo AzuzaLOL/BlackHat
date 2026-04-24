@@ -41,6 +41,7 @@ public class Antivirus : MonoBehaviour
 
         int issues = 0;
         issues += GameManager.moneyDrainAmount;
+        issues += GameManager.numHacksFailed;
         string issuesColor = "green";
 
         if (issues > 0)
@@ -80,6 +81,7 @@ public class Antivirus : MonoBehaviour
 
         int issues = 0;
         issues += GameManager.moneyDrainAmount;
+        issues += GameManager.numHacksFailed;
         string issuesColor = "green";
 
 
