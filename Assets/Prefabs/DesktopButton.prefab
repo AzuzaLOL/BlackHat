@@ -153,6 +153,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3050049640789426641}
+  - component: {fileID: 3280555820327544340}
   m_Layer: 5
   m_Name: DesktopButton
   m_TagString: Untagged
@@ -181,6 +182,14 @@ RectTransform:
   m_AnchoredPosition: {x: -700.0862, y: 347.5577}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3280555820327544340
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6080175208523423282}
+  m_CullTransparentMesh: 1
 --- !u!1 &6254197669340960257
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,7 +224,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.20359904}
-  m_AnchoredPosition: {x: -1.3499985, y: 0}
+  m_AnchoredPosition: {x: -1.3500061, y: 0}
   m_SizeDelta: {x: -28.8, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2995618050851790163
@@ -275,7 +284,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.75
+  m_fontSize: 48.8
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
