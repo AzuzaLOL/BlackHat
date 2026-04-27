@@ -76,10 +76,16 @@ public class GameManager : MonoBehaviour
         if (vpnTimer > 60)
         {
             vpnWarningSign.SetActive(true);
+
+            // Audio changes when VPN fails
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName(gameplayAudioManager.vpnParam, 0);
         }
         else
         {
             vpnWarningSign.SetActive(false);
+
+            // Audio changes when VPN is back on
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName(gameplayAudioManager.vpnParam, 1);
         }
 
         if (moneyDrainAmount > 0)

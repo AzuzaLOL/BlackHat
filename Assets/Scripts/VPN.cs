@@ -6,9 +6,6 @@ public class VPN : MonoBehaviour
     public TMP_Text vpnTimerText;
     public TMP_Text IPText;
 
-    // Audio
-    public GameplayAudioManager audioManager;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -39,9 +36,6 @@ public class VPN : MonoBehaviour
         {
             timerColor = "red";
             GameManager.forceHackFail = true;
-
-            // Audio changes when VPN fails
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName(audioManager.vpnParam, 0);
         }
 
         vpnTimerText.text = "Time on current network: <color=\"" + timerColor + "\">" + vpnTime + "s</color>";
@@ -53,8 +47,6 @@ public class VPN : MonoBehaviour
         GameManager.vpnTimer = 0;
         GameManager.forceHackFail = false;
 
-        // Audio changes when VPN is back on
-        FMODUnity.RuntimeManager.StudioSystem.setParameterByName(audioManager.vpnParam, 1);
 
         // Generate and set new IP text
         GenerateIP();
