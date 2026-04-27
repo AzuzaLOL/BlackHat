@@ -7743,7 +7743,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 683262345}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a46d5969a4c3548289e6ae776dd5baaa, type: 3}
   m_Name: 
@@ -7764,7 +7764,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 683262345}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39ec9437dc040f94dadba51d7dfb7793, type: 3}
   m_Name: 
@@ -7784,7 +7784,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 683262345}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac9decb2198fd8d4abdd73cf822dd1ce, type: 3}
   m_Name: 
@@ -20169,11 +20169,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 794563250
-      Data2: 1267969036
-      Data3: 1593802133
-      Data4: -311134898
-    Path: event:/Gameplay
+      Data1: -918377442
+      Data2: 1328912825
+      Data3: -163951984
+      Data4: 383056181
+    Path: event:/Music/Gameplay
   Event: 
   EventPlayTrigger: 0
   EventStopTrigger: 0
