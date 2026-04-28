@@ -8,17 +8,17 @@ public class GameManager : MonoBehaviour
 
     // Upgradable stats related to black market
     public static float paymentTimer = 300;
-    public static int paymentCost = 300;
+    public static int paymentCost = 0;
     public static int numberPayments = 0;
 
     public static int bypassLevel = 1;
-    public static int bypassCost = 50;
+    public static int bypassCost = 0;
 
     public static int extractLevel = 1;
-    public static int extractCost = 50;
+    public static int extractCost = 0;
 
     public static int searchLevel = 1;
-    public static int searchCost = 50;
+    public static int searchCost = 0;
 
     // Related to VPN security center
     public static float vpnTimer = 0;
@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
     {
         // Choose an app to go down
         int appIndex = Random.Range(0, 3);
-
+        // Debug.Log(appIndex);
         // Emit the event for chosen app
         switch(appIndex)
         {

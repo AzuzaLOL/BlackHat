@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.Events;
 using TMPro;
 using UnityEngine.UI;
+using FMODUnity;
 
 public class Maintenance : MonoBehaviour
 {
@@ -21,6 +22,11 @@ public class Maintenance : MonoBehaviour
 
     // Warning Sign
     public GameObject warningSign;
+
+    // Audio
+    public StudioEventEmitter repairShort;
+    public StudioEventEmitter repairLong;
+
     
 
     void Awake()
@@ -43,6 +49,7 @@ public class Maintenance : MonoBehaviour
             case 0:
                 Debug.Log("Starting Terminal Repair...");
                 repairText.text = "Repairing Terminal...";
+                repairShort.Play();
 
                 // Wait the time to repair the app
                 float t = 0f;
@@ -67,6 +74,7 @@ public class Maintenance : MonoBehaviour
             case 1:
                 Debug.Log("Starting Black Market Repair...");
                 repairText.text = "Repairing Black Market...";
+                repairShort.Play();
 
                 // Wait the time to repair the app
                 t = 0f;
@@ -91,6 +99,7 @@ public class Maintenance : MonoBehaviour
             case 2:
                 Debug.Log("Starting Security Center Repair...");
                 repairText.text = "Repairing Security Center...";
+                repairShort.Play();
 
                 // Wait the time to repair the app
                 t = 0f;
@@ -115,6 +124,7 @@ public class Maintenance : MonoBehaviour
             case 3:
                 Debug.Log("Starting All Apps Repair...");
                 repairText.text = "Repairing All Apps...";
+                repairLong.Play();
 
                 // Wait the time to repair the app
                 t = 0f;

@@ -8,4 +8,10 @@ public class WindowOpens : MonoBehaviour
     {
         window.SetActive(true);
     }
+
+    public void Disable()
+    {
+        gameObject.SetActive(false);
+    }
+
 }

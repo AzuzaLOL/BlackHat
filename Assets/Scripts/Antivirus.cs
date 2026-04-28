@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 using UnityEngine.UI;
+using FMODUnity;
 
 public class Antivirus : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class Antivirus : MonoBehaviour
     const float DISINFECT_TIME = 3f;
     private bool isAntivirusActive = false;
 
+    // Audio
+    public StudioEventEmitter scanSound;
+    public StudioEventEmitter disinfectSound;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,6 +33,7 @@ public class Antivirus : MonoBehaviour
         Debug.Log("Starting Antivirus Scan...");
         isAntivirusActive = true;
         issuesText.text = "Scanning...";
+        scanSound.Play();
 
         // Wait the time to scan
         float t = 0f;
@@ -68,6 +73,7 @@ public class Antivirus : MonoBehaviour
         Debug.Log("Starting Antivirus Disinfect...");
         isAntivirusActive = true;
         issuesText.text = "Disinfecting...";
+        disinfectSound.Play();
 
         // Wait the time to disinfect
         float t = 0f;
