@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static float paymentTimer = 300;
     public static int paymentCost = 50;
     public static int numberPayments = 0;
+    public GameObject debtWarningIcon;
 
     public static int bypassLevel = 1;
     public static int bypassCost = 5;
@@ -99,6 +100,16 @@ public class GameManager : MonoBehaviour
 
         // Timer for Audio
         gameplayAudioManager.UpdateTimerParam();
+
+        // Enable warning when payment is close
+        if (paymentTimer <= 60)
+        {
+            debtWarningIcon.SetActive(true);
+        }
+        else
+        {
+            debtWarningIcon.SetActive(false);
+        }
 
         if (paymentTimer <= 0)
         {
