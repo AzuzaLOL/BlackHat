@@ -42,7 +42,7 @@ public class SystemNode : MonoBehaviour
         {
             // Node Name
             string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-            int nameLength = Random.Range(3, 6);
+            int nameLength = Random.Range(1, 4);
             nodeName = "";
 
             for(int i = 0; i < nameLength; i++)

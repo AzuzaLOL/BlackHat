@@ -8,17 +8,17 @@ public class GameManager : MonoBehaviour
 
     // Upgradable stats related to black market
     public static float paymentTimer = 300;
-    public static int paymentCost = 0;
+    public static int paymentCost = 50;
     public static int numberPayments = 0;
 
     public static int bypassLevel = 1;
-    public static int bypassCost = 0;
+    public static int bypassCost = 5;
 
     public static int extractLevel = 1;
-    public static int extractCost = 0;
+    public static int extractCost = 5;
 
     public static int searchLevel = 1;
-    public static int searchCost = 0;
+    public static int searchCost = 10;
 
     // Related to VPN security center
     public static float vpnTimer = 0;
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     public static UnityEvent updateAppStatus = new UnityEvent();
 
     public static float maintenanceEventTimer = 0;
-    public static float maintenanceEventInterval = 5;
+    public static float maintenanceEventInterval = 35;
 
     // Audio Manager
     public GameplayAudioManager gameplayAudioManager;

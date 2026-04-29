@@ -258,6 +258,7 @@ public class Typing : MonoBehaviour
         List<bool> resultList = new List<bool>();
         resultList.Add(true);
         resultList.Add(true);
+        resultList.Add(true);
         resultList.Add(false);
 
         // Add true for each bypass level higher than firewall
@@ -346,6 +347,7 @@ public class Typing : MonoBehaviour
         // Calculate if the node is extracted based on level difference
         // Add defaults to the result lise (default hack chances for equal levels)
         List<bool> resultList = new List<bool>();
+        resultList.Add(true);
         resultList.Add(true);
         resultList.Add(true);
         resultList.Add(false);
