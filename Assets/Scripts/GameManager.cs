@@ -51,12 +51,12 @@ public class GameManager : MonoBehaviour
     public GameplayAudioManager gameplayAudioManager;
 
     // Stats for Game Over
-    public static float totalTimeLasted;
-    public static int totalMoneyEarned;
-    public static int totalSuccessfulBypasses;
-    public static int totalSuccessfulExtracts;
-    public static int totalFailedHacks;
-    public static int totalUpgradesPurchased;
+    public static float totalTimeLasted = 0;
+    public static int totalMoneyEarned = 0;
+    public static int totalSuccessfulBypasses = 0;
+    public static int totalSuccessfulExtracts = 0;
+    public static int totalFailedHacks = 0;
+    public static int totalUpgradesPurchased = 0;
 
     public GameObject gameOver;
     public GameObject[] gameOverObjectsToDisable;
@@ -64,7 +64,48 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        
+        // Reset all gameplay variables
+        balance = 0;
+
+        // Upgradable stats related to black market
+        paymentTimer = 10;
+        paymentCost = 50;
+        numberPayments = 0;
+
+        bypassLevel = 1;
+        bypassCost = 5;
+
+        extractLevel = 1;
+        extractCost = 5;
+
+        searchLevel = 1;
+        searchCost = 10;
+
+        // Related to VPN security center
+        vpnTimer = 0;
+        forceHackFail = false;
+
+        // For Antivirus in security center
+        numHacksFailed = 0;
+        moneyDrainAmount = 0;
+        moneyDrainTimer = 0;
+        moneyDrainInterval = 1;
+
+        // App status for Maintenance
+        isTerminalWorking = true;
+        isBlackMarketWorking = true;
+        isSecurityCenterWorking = true;
+
+       maintenanceEventTimer = 0;
+       maintenanceEventInterval = 35;
+
+        // Stats for Game Over
+        totalTimeLasted = 0;
+        totalMoneyEarned = 0;
+        totalSuccessfulBypasses = 0;
+        totalSuccessfulExtracts = 0;
+        totalFailedHacks = 0;
+        totalUpgradesPurchased = 0;
     }
 
 
