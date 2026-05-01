@@ -9,6 +9,8 @@ public class GameplayAudioManager : MonoBehaviour
     public string paymentTimerParam;
     [FMODUnity.ParamRef]
     public string vpnParam;
+    [FMODUnity.ParamRef]
+    public string alarmParam;
 
     void Start()
     {

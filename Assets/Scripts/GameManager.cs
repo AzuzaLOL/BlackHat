@@ -92,10 +92,17 @@ public class GameManager : MonoBehaviour
         if (moneyDrainAmount > 0)
         {
             antivirusWarningSign.SetActive(true);
+
+            // Audio change when virus is active
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName(gameplayAudioManager.alarmParam, 1);
+
         }
         else
         {
             antivirusWarningSign.SetActive(false);
+
+            // Audio change when virus is no longer active
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName(gameplayAudioManager.alarmParam, 0);
         }
 
         // Timer for Audio

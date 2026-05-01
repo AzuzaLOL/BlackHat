@@ -21966,6 +21966,7 @@ MonoBehaviour:
   gameplayEmitter: {fileID: 1377287280}
   paymentTimerParam: ransom_timer
   vpnParam: VPN_Level
+  alarmParam: alarm_status
 --- !u!1001 &1384386717
 PrefabInstance:
   m_ObjectHideFlags: 0
