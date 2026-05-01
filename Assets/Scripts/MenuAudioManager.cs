@@ -10,6 +10,11 @@ public class MenuAudioManager : MonoBehaviour
 
     void Awake()
     {
+        // startEmitter.Stop();
+        // FMODUnity.RuntimeManager.StudioSystem.setParameterByName(gameStartParam, 0);
+        // if (!startEmitter.IsActive){
+            
+        // }
         startEmitter.Play();
     }
 
@@ -22,6 +27,6 @@ public class MenuAudioManager : MonoBehaviour
     // START GAMEPLAY
     public void startGame()
     {
-         FMODUnity.RuntimeManager.StudioSystem.setParameterByName(gameStartParam, 1);
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName(gameStartParam, 1);
     }
 }

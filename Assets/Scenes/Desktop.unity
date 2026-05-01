@@ -7774,6 +7774,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da40e5e462c7e545b74f1837f13d7af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicEmitter: {fileID: 1377287280}
+  gameStartParam: game_start
 --- !u!114 &444816652
 MonoBehaviour:
   m_ObjectHideFlags: 0
