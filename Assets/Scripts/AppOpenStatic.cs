@@ -4,7 +4,7 @@ using FMODUnity;
 
 public class AppOpenStatic : MonoBehaviour
 {
-    public enum App {Terminal, Market, Maintenance, Security}
+    public enum App {Terminal, Market, Maintenance, Security, GameOver}
     public App app;
     public StudioEventEmitter staticSound;
 
@@ -25,7 +25,7 @@ public class AppOpenStatic : MonoBehaviour
             case App.Terminal:
                 if (GameManager.isTerminalWorking)
                 {
-                    StartCoroutine(AppStartup());
+                    StartCoroutine(AppStartup(0.3f));
                 }
                 else
                 {
@@ -35,7 +35,7 @@ public class AppOpenStatic : MonoBehaviour
             case App.Market:
                 if (GameManager.isBlackMarketWorking)
                 {
-                    StartCoroutine(AppStartup());
+                    StartCoroutine(AppStartup(0.3f));
                 }
                 else
                 {
@@ -45,20 +45,24 @@ public class AppOpenStatic : MonoBehaviour
             case App.Security:
                 if (GameManager.isSecurityCenterWorking)
                 {
-                    StartCoroutine(AppStartup());
+                    StartCoroutine(AppStartup(0.3f));
                 }
                 else
                 {
                     staticSound.Play();
                 }
                 break;
+            case App.GameOver:
+                staticSound.Play();
+                StartCoroutine(AppStartup(4f));
+                break;
             default:
-                StartCoroutine(AppStartup());
+                StartCoroutine(AppStartup(0.3f));
                 break;
         }
     }
 
-    public IEnumerator AppStartup()
+    public IEnumerator AppStartup(float duration)
     {
         foreach (GameObject obj in objectsToDisable)
         {
@@ -68,11 +72,16 @@ public class AppOpenStatic : MonoBehaviour
         notWorkingStaticCoverImage.SetActive(true);
         notWorkingBorderCoverImage.SetActive(true);
             
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(duration);
 
         foreach (GameObject obj in objectsToDisable)
         {
             obj.SetActive(true);
+        }
+
+        if(app == App.GameOver)
+        {
+            staticSound.Stop();
         }
 
         notWorkingStaticCoverImage.SetActive(false);

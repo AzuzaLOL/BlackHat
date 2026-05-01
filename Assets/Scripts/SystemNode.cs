@@ -132,6 +132,9 @@ public class SystemNode : MonoBehaviour
         var main = ps.main;
         main.startColor = new Color(1f, 0.6f, 0f);
         ps.Play();
+
+        // Stats for game over
+        GameManager.totalSuccessfulBypasses += 1;
     }
 
 
@@ -144,6 +147,10 @@ public class SystemNode : MonoBehaviour
         var main = ps.main;
         main.startColor = new Color(1f, 1f, 0f);
         ps.Play();
+
+        // Stats for game over
+        GameManager.totalSuccessfulExtracts += 1;
+        GameManager.totalMoneyEarned += reward;
     }
 
     public void FailHack()
@@ -163,6 +170,9 @@ public class SystemNode : MonoBehaviour
         {
             GameManager.moneyDrainAmount += 1;
         }
+
+        // Stats for game over
+        GameManager.totalFailedHacks += 1;
     }
 
 

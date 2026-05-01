@@ -51,6 +51,10 @@ public class BlackMarket : MonoBehaviour
             GameManager.bypassCost *= 2;
 
             balanceText.UpdateBalance();
+
+            // Stats for game over
+            GameManager.totalUpgradesPurchased += 1;
+
             Start();
         }
     }
@@ -62,6 +66,10 @@ public class BlackMarket : MonoBehaviour
             GameManager.extractCost *= 2;
 
             balanceText.UpdateBalance();
+            
+            // Stats for game over
+            GameManager.totalUpgradesPurchased += 1;
+
             Start();
         }
     }
@@ -73,6 +81,10 @@ public class BlackMarket : MonoBehaviour
             GameManager.searchCost *= 2;
 
             balanceText.UpdateBalance();
+            
+            // Stats for game over
+            GameManager.totalUpgradesPurchased += 1;
+
             Start();
         }
     }

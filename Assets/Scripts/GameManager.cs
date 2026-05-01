@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static int balance = 0;
 
     // Upgradable stats related to black market
-    public static float paymentTimer = 300;
+    public static float paymentTimer = 70;
     public static int paymentCost = 50;
     public static int numberPayments = 0;
     public GameObject debtWarningIcon;
@@ -50,6 +50,17 @@ public class GameManager : MonoBehaviour
     // Audio Manager
     public GameplayAudioManager gameplayAudioManager;
 
+    // Stats for Game Over
+    public static float totalTimeLasted;
+    public static int totalMoneyEarned;
+    public static int totalSuccessfulBypasses;
+    public static int totalSuccessfulExtracts;
+    public static int totalFailedHacks;
+    public static int totalUpgradesPurchased;
+
+    public GameObject gameOver;
+    public GameObject[] gameOverObjectsToDisable;
+
 
     void Awake()
     {
@@ -62,6 +73,9 @@ public class GameManager : MonoBehaviour
         // Handle the payment and VPN timers
         paymentTimer -= Time.deltaTime;
         vpnTimer += Time.deltaTime;
+
+        // Stats for game over
+        totalTimeLasted += Time.deltaTime;
 
         if (vpnTimer > 60 || moneyDrainAmount > 0)
         {
@@ -122,6 +136,9 @@ public class GameManager : MonoBehaviour
         {
             // Game Ends
             Debug.Log("Game Over!");
+
+            GameOver();
+            return;
         }
 
         // Money Drain
@@ -172,5 +189,16 @@ public class GameManager : MonoBehaviour
                 updateAppStatus.Invoke();
                 break;
         }
+    }
+
+    // Game Over
+    void GameOver()
+    {
+        foreach (GameObject obj in gameOverObjectsToDisable)
+        {
+            obj.SetActive(false);
+        }
+
+        gameOver.SetActive(true);
     }
 }
