@@ -23,9 +23,11 @@ public class SceneHandlerWrapper : MonoBehaviour
     // For Changing the Scene in a non-static way
     public void SwitchScene(int index)
     {
-        FMODUnity.RuntimeManager.StudioSystem.setParameterByName(gameStartParam, 0);
+        musicEmitter.AllowFadeout = false;
         musicEmitter.Stop();
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName(gameStartParam, 0);
 
         SceneHandler.SwitchScene(index);
+        
     }
 }

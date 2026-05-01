@@ -10,7 +10,7 @@ public class MenuAudioManager : MonoBehaviour
 
     void Awake()
     {
-        // startEmitter.Stop();
+        // startEmitter.TriggerOnce = true;
         // FMODUnity.RuntimeManager.StudioSystem.setParameterByName(gameStartParam, 0);
         // if (!startEmitter.IsActive){
             
