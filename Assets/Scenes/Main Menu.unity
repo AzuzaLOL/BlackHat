@@ -5239,7 +5239,7 @@ MonoBehaviour:
       Data2: 1078280482
       Data3: -799321155
       Data4: 1863331366
-    Path: event:/Start
+    Path: event:/Music/Start
   Event: 
   EventPlayTrigger: 0
   EventStopTrigger: 0
@@ -22185,7 +22185,7 @@ MonoBehaviour:
       Data2: 1315496796
       Data3: 758370209
       Data4: -67019446
-    Path: event:/Click
+    Path: event:/Gameplay/Click
   Event: 
   EventPlayTrigger: 0
   EventStopTrigger: 0

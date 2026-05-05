@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using FMODUnity;
 
 public class BlackMarket : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class BlackMarket : MonoBehaviour
     public TMP_Text debtCostText;
 
     public BalanceText balanceText;
+
+    // Audio
+    public StudioEventEmitter upgradePurchaseSound;
+    public StudioEventEmitter debtPurchaseSound;
 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -55,6 +60,8 @@ public class BlackMarket : MonoBehaviour
             // Stats for game over
             GameManager.totalUpgradesPurchased += 1;
 
+            upgradePurchaseSound.Play();
+
             Start();
         }
     }
@@ -69,6 +76,8 @@ public class BlackMarket : MonoBehaviour
             
             // Stats for game over
             GameManager.totalUpgradesPurchased += 1;
+
+            upgradePurchaseSound.Play();
 
             Start();
         }
@@ -85,6 +94,8 @@ public class BlackMarket : MonoBehaviour
             // Stats for game over
             GameManager.totalUpgradesPurchased += 1;
 
+            upgradePurchaseSound.Play();
+
             Start();
         }
     }
@@ -98,6 +109,9 @@ public class BlackMarket : MonoBehaviour
             balanceText.UpdateBalance();
             // Reset Timer
             GameManager.paymentTimer = 300;
+
+            debtPurchaseSound.Play();
+
             Start();
         }
     }

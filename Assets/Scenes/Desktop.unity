@@ -1011,7 +1011,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8423036393344994536, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8423036393344994536, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -1032,7 +1032,7 @@ PrefabInstance:
     - target: {fileID: 8423036393344994536, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1964338676}
+      objectReference: {fileID: 853597022}
     - target: {fileID: 8423036393344994536, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
@@ -6431,7 +6431,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.15
+  m_fontSize: 70.35
   m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7281,69 +7281,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 388544326}
   m_CullTransparentMesh: 1
---- !u!1 &392517166
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 392517168}
-  - component: {fileID: 392517167}
-  m_Layer: 0
-  m_Name: Terminal Click
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &392517167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 392517166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: 632029091
-      Data2: 1185236431
-      Data3: 2131316390
-      Data4: 1870135174
-    Path: event:/Terminal Button 2
-  Event: 
-  EventPlayTrigger: 0
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
---- !u!4 &392517168
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 392517166}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 851689019}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &395815421 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3050049640789426641, guid: 0625359542f92444f9660cf294e33f3d, type: 3}
@@ -8257,7 +8194,7 @@ MonoBehaviour:
       Data2: 1078280482
       Data3: -799321155
       Data4: 1863331366
-    Path: event:/Start
+    Path: event:/Music/Start
   Event: 
   EventPlayTrigger: 0
   EventStopTrigger: 0
@@ -9183,6 +9120,8 @@ MonoBehaviour:
   timeRemainingText: {fileID: 305198307}
   debtCostText: {fileID: 1384386718}
   balanceText: {fileID: 1211696686}
+  upgradePurchaseSound: {fileID: 1964338676}
+  debtPurchaseSound: {fileID: 925646433}
 --- !u!1 &678668083
 GameObject:
   m_ObjectHideFlags: 0
@@ -10552,7 +10491,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 392517168}
   - {fileID: 1360902838}
   - {fileID: 1731212317}
   - {fileID: 2120705265}
@@ -10609,7 +10547,7 @@ MonoBehaviour:
       Data2: 1315496796
       Data3: 758370209
       Data4: -67019446
-    Path: event:/Click
+    Path: event:/Gameplay/Click
   Event: 
   EventPlayTrigger: 0
   EventStopTrigger: 0
@@ -22519,7 +22457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8423036393344994536, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8423036393344994536, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -22540,7 +22478,7 @@ PrefabInstance:
     - target: {fileID: 8423036393344994536, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1964338676}
+      objectReference: {fileID: 853597022}
     - target: {fileID: 8423036393344994536, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
@@ -22671,7 +22609,7 @@ MonoBehaviour:
       Data2: 1105254773
       Data3: 199515803
       Data4: 663203857
-    Path: event:/Keyboard/Enter
+    Path: event:/Gameplay/Terminal/Keyboard/Enter
   Event: 
   EventPlayTrigger: 0
   EventStopTrigger: 0
@@ -22983,7 +22921,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8423036393344994536, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8423036393344994536, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -23004,7 +22942,7 @@ PrefabInstance:
     - target: {fileID: 8423036393344994536, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 925646433}
+      objectReference: {fileID: 853597022}
     - target: {fileID: 8423036393344994536, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
@@ -29152,7 +29090,7 @@ MonoBehaviour:
       Data2: 1255652759
       Data3: 1232405903
       Data4: 1110564402
-    Path: event:/Keyboard/Space
+    Path: event:/Gameplay/Terminal/Keyboard/Space
   Event: 
   EventPlayTrigger: 0
   EventStopTrigger: 0
@@ -31072,7 +31010,7 @@ MonoBehaviour:
       Data2: 1220893331
       Data3: -109452868
       Data4: -1776877073
-    Path: event:/Keyboard/Key
+    Path: event:/Gameplay/Terminal/Keyboard/Key
   Event: 
   EventPlayTrigger: 0
   EventStopTrigger: 0
@@ -31943,7 +31881,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8423036393344994536, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8423036393344994536, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -31964,7 +31902,7 @@ PrefabInstance:
     - target: {fileID: 8423036393344994536, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1964338676}
+      objectReference: {fileID: 853597022}
     - target: {fileID: 8423036393344994536, guid: 1bfe62f476adb4faaa2ff3925501c199, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
