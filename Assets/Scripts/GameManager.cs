@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
+using FMODUnity;
 
 public class GameManager : MonoBehaviour
 {
     public static int balance = 0;
 
     // Upgradable stats related to black market
-    public static float paymentTimer = 10;
+    public static float paymentTimer = 300;
     public static int paymentCost = 50;
     public static int numberPayments = 0;
     public GameObject debtWarningIcon;
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
     public static float moneyDrainInterval = 1;
     public const int HACKS_REQUIRED_FOR_MONEY_DRAIN = 5;
     public static UnityEvent drainMoney = new UnityEvent();
+    public StudioEventEmitter drainMoneySound;
 
     // App status for Maintenance
     public static bool isTerminalWorking = true;
@@ -68,7 +70,7 @@ public class GameManager : MonoBehaviour
         balance = 0;
 
         // Upgradable stats related to black market
-        paymentTimer = 10;
+        paymentTimer = 300;
         paymentCost = 50;
         numberPayments = 0;
 
@@ -191,6 +193,7 @@ public class GameManager : MonoBehaviour
                 balance -= moneyDrainAmount;
                 moneyDrainTimer -= moneyDrainInterval;
                 drainMoney.Invoke();
+                drainMoneySound.Play();
             }
         }
 
