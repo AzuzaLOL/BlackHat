@@ -10074,7 +10074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LoadEvent: 1
-  UnloadEvent: 0
+  UnloadEvent: 2
   Banks:
   - Master
   CollisionTag: 

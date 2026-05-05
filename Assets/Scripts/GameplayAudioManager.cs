@@ -1,5 +1,6 @@
 using UnityEngine;
 using FMODUnity;
+using System.Collections;
 
 public class GameplayAudioManager : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class GameplayAudioManager : MonoBehaviour
 
     void Start()
     {
-        gameplayEmitter.Play();
+        StartCoroutine(CheckBanksLoaded());
     }
 
     // Update is called once per frame
@@ -26,6 +27,21 @@ public class GameplayAudioManager : MonoBehaviour
     public void UpdateTimerParam()
     {
         FMODUnity.RuntimeManager.StudioSystem.setParameterByName(paymentTimerParam, GameManager.paymentTimer);
+    }
+
+    public IEnumerator CheckBanksLoaded()
+    {
+        while (!RuntimeManager.HaveAllBanksLoaded)
+
+        {
+            yield return null; 
+            // Wait until all banks are loaded
+        }
+
+        // Ensure FMOD is fully initialized before playing sounds
+        yield return new WaitForSeconds(0.1f);
+        gameplayEmitter.Play();
+
     }
 
 }
