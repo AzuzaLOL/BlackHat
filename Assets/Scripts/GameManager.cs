@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static int balance = 0;
 
     // Upgradable stats related to black market
-    public static float paymentTimer = 300;
+    public static float paymentTimer = 10;
     public static int paymentCost = 50;
     public static int numberPayments = 0;
     public GameObject debtWarningIcon;
@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
         balance = 0;
 
         // Upgradable stats related to black market
-        paymentTimer = 300;
+        paymentTimer = 10;
         paymentCost = 50;
         numberPayments = 0;
 
