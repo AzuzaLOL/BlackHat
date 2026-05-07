@@ -9126,6 +9126,7 @@ MonoBehaviour:
   balanceText: {fileID: 1211696686}
   upgradePurchaseSound: {fileID: 1964338676}
   debtPurchaseSound: {fileID: 925646433}
+  invalidPurchaseSound: {fileID: 499670301}
 --- !u!1 &678668083
 GameObject:
   m_ObjectHideFlags: 0

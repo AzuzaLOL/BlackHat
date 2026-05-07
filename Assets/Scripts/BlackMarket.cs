@@ -21,6 +21,7 @@ public class BlackMarket : MonoBehaviour
     // Audio
     public StudioEventEmitter upgradePurchaseSound;
     public StudioEventEmitter debtPurchaseSound;
+    public StudioEventEmitter invalidPurchaseSound;
 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -64,6 +65,10 @@ public class BlackMarket : MonoBehaviour
 
             Start();
         }
+        else
+        {
+            invalidPurchaseSound.Play();
+        }
     }
 
     public void UpgradeExtract() {
@@ -80,6 +85,10 @@ public class BlackMarket : MonoBehaviour
             upgradePurchaseSound.Play();
 
             Start();
+        }
+        else
+        {
+            invalidPurchaseSound.Play();
         }
     }
 
@@ -98,6 +107,10 @@ public class BlackMarket : MonoBehaviour
 
             Start();
         }
+        else
+        {
+            invalidPurchaseSound.Play();
+        }
     }
 
     public void MakePayment() {
@@ -113,6 +126,10 @@ public class BlackMarket : MonoBehaviour
             debtPurchaseSound.Play();
 
             Start();
+        }
+        else
+        {
+            invalidPurchaseSound.Play();
         }
     }
 
