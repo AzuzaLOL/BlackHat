@@ -5151,7 +5151,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 71.85
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -23325,7 +23325,7 @@ PrefabInstance:
       objectReference: {fileID: 1607125205}
     - target: {fileID: 8182365607273500206, guid: a3fd7887e3df54f8393563af0c8dec87, type: 3}
       propertyPath: objectsToDisable.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8182365607273500206, guid: a3fd7887e3df54f8393563af0c8dec87, type: 3}
       propertyPath: 'objectsToDisable.Array.data[0]'
@@ -23338,7 +23338,7 @@ PrefabInstance:
     - target: {fileID: 8182365607273500206, guid: a3fd7887e3df54f8393563af0c8dec87, type: 3}
       propertyPath: 'objectsToDisable.Array.data[2]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 126908823}
     m_RemovedComponents:
     - {fileID: 2074751146830087765, guid: a3fd7887e3df54f8393563af0c8dec87, type: 3}
     m_RemovedGameObjects:
@@ -23356,7 +23356,7 @@ PrefabInstance:
       insertIndex: 2
       addedObject: {fileID: 1157777104}
     - targetCorrespondingSourceObject: {fileID: 7941004087004926096, guid: a3fd7887e3df54f8393563af0c8dec87, type: 3}
-      insertIndex: 6
+      insertIndex: 3
       addedObject: {fileID: 126908824}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3349821242155759704, guid: a3fd7887e3df54f8393563af0c8dec87, type: 3}
@@ -24283,7 +24283,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 63.8
+  m_fontSize: 100
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1

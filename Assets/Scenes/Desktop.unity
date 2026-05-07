@@ -223,7 +223,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
+  m_fontSize: 60
   m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9287,6 +9287,7 @@ GameObject:
   - component: {fileID: 683262350}
   - component: {fileID: 683262351}
   - component: {fileID: 683262352}
+  - component: {fileID: 683262353}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -9432,6 +9433,20 @@ MonoBehaviour:
   progressBar: {fileID: 899719371}
   scanSound: {fileID: 280713310}
   disinfectSound: {fileID: 27430181}
+--- !u!114 &683262353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683262345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc3267c6fd5b4a478f45612b9ef704c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vpnTimerText: {fileID: 455770451}
+  IPText: {fileID: 906469141}
 --- !u!1 &685088382
 GameObject:
   m_ObjectHideFlags: 0
@@ -16094,7 +16109,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2073008091}
+      - m_Target: {fileID: 683262353}
         m_TargetAssemblyTypeName: VPN, Assembly-CSharp
         m_MethodName: ResetVPN
         m_Mode: 1
@@ -30883,7 +30898,6 @@ GameObject:
   - component: {fileID: 2073008088}
   - component: {fileID: 2073008090}
   - component: {fileID: 2073008089}
-  - component: {fileID: 2073008091}
   m_Layer: 5
   m_Name: VPN
   m_TagString: Untagged
@@ -30953,20 +30967,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2073008087}
   m_CullTransparentMesh: 1
---- !u!114 &2073008091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2073008087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bc3267c6fd5b4a478f45612b9ef704c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vpnTimerText: {fileID: 455770451}
-  IPText: {fileID: 906469141}
 --- !u!1 &2093891478 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3349821242155759704, guid: a3fd7887e3df54f8393563af0c8dec87, type: 3}
@@ -32538,7 +32538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6275454748853850483, guid: a3fd7887e3df54f8393563af0c8dec87, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6429209089238470777, guid: a3fd7887e3df54f8393563af0c8dec87, type: 3}
       propertyPath: m_AnchoredPosition.y

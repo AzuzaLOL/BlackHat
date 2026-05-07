@@ -27,6 +27,9 @@ public class SystemNode : MonoBehaviour
 
     public ParticleSystem ps;
 
+    // Name Blacklist
+    public string[] blacklist = {"fag", "wop", "nip", "gyp", "jap", "jew", "f4g", "w0p", "n1p", "j4p", "j3w"};
+
 
     // NODE SPAWNING
     void Awake()
@@ -41,14 +44,7 @@ public class SystemNode : MonoBehaviour
         else
         {
             // Node Name
-            string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-            int nameLength = Random.Range(1, 4);
-            nodeName = "";
-
-            for(int i = 0; i < nameLength; i++)
-            {
-                nodeName += alphabet[Random.Range(0, alphabet.Length)];
-            }
+            GenerateName();
 
 
             // Generate a random icon
@@ -98,6 +94,28 @@ public class SystemNode : MonoBehaviour
         reward = Random.Range(rwMin, rwMax + 1);
 
 
+    }
+
+    void GenerateName()
+    {
+        string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        int nameLength = Random.Range(1, 4);
+        nodeName = "";
+
+        for(int i = 0; i < nameLength; i++)
+        {
+            nodeName += alphabet[Random.Range(0, alphabet.Length)];
+        }
+
+        // Check if name is blacklisted
+        foreach(string bl in blacklist)
+        {
+            if (bl == nodeName)
+            {
+                GenerateName();
+                break;
+            }
+        }
     }
 
     // Update is called once per frame
