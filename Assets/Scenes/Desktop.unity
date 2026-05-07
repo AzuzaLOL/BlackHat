@@ -223,7 +223,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
+  m_fontSize: 30
   m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9321,6 +9321,7 @@ MonoBehaviour:
   terminalSecurityWarningSign: {fileID: 1304307531}
   vpnWarningSign: {fileID: 1830178712}
   antivirusWarningSign: {fileID: 56177410}
+  drainMoneySound: {fileID: 0}
   gameplayAudioManager: {fileID: 1377287281}
   gameOver: {fileID: 1711667864}
   gameOverObjectsToDisable:
