@@ -30,6 +30,7 @@ public class VPN : MonoBehaviour
         else if (vpnTime < WARNING_VPN_TIME)
         {
             timerColor = "yellow";
+
         }
         else
         {
@@ -45,6 +46,7 @@ public class VPN : MonoBehaviour
         // Reset VPN
         GameManager.vpnTimer = 0;
         GameManager.forceHackFail = false;
+
 
         // Generate and set new IP text
         GenerateIP();

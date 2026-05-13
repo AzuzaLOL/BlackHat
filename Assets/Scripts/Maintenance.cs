@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.Events;
 using TMPro;
+using UnityEngine.UI;
+using FMODUnity;
 
 public class Maintenance : MonoBehaviour
 {
@@ -14,6 +16,17 @@ public class Maintenance : MonoBehaviour
     public TMP_Text terminalStatusText;
     public TMP_Text blackMarketStatusText;
     public TMP_Text SecurityCenterstatusText;
+
+    public TMP_Text repairText;
+    public Image repairProgress;
+
+    // Warning Sign
+    public GameObject warningSign;
+
+    // Audio
+    public StudioEventEmitter repairShort;
+    public StudioEventEmitter repairLong;
+
     
 
     void Awake()
@@ -35,12 +48,15 @@ public class Maintenance : MonoBehaviour
             // Terminal
             case 0:
                 Debug.Log("Starting Terminal Repair...");
+                repairText.text = "Repairing Terminal...";
+                repairShort.Play();
 
                 // Wait the time to repair the app
                 float t = 0f;
                 while (t < SINGLE_APP_REPAIR_TIME)
                 {
                     t += Time.deltaTime;
+                    repairProgress.fillAmount = t / SINGLE_APP_REPAIR_TIME;
                     yield return null;
                 }
 
@@ -49,17 +65,23 @@ public class Maintenance : MonoBehaviour
                 isRepairing = false;
 
                 Debug.Log("Terminal Repaired.");
+                repairText.text = "";
+                repairProgress.fillAmount = 0;
+                GameManager.updateAppStatus.Invoke();
                 break;
 
             // Black Market
             case 1:
                 Debug.Log("Starting Black Market Repair...");
+                repairText.text = "Repairing Black Market...";
+                repairShort.Play();
 
                 // Wait the time to repair the app
                 t = 0f;
                 while (t < SINGLE_APP_REPAIR_TIME)
                 {
                     t += Time.deltaTime;
+                    repairProgress.fillAmount = t / SINGLE_APP_REPAIR_TIME;
                     yield return null;
                 }
 
@@ -68,17 +90,23 @@ public class Maintenance : MonoBehaviour
                 isRepairing = false;
 
                 Debug.Log("Black Market Repaired.");
+                repairText.text = "";
+                repairProgress.fillAmount = 0;
+                GameManager.updateAppStatus.Invoke();
                 break;
             
             // Security Center
             case 2:
                 Debug.Log("Starting Security Center Repair...");
+                repairText.text = "Repairing Security Center...";
+                repairShort.Play();
 
                 // Wait the time to repair the app
                 t = 0f;
                 while (t < SINGLE_APP_REPAIR_TIME)
                 {
                     t += Time.deltaTime;
+                    repairProgress.fillAmount = t / SINGLE_APP_REPAIR_TIME;
                     yield return null;
                 }
 
@@ -87,17 +115,23 @@ public class Maintenance : MonoBehaviour
                 isRepairing = false;
 
                 Debug.Log("Security Center Repaired.");
+                repairText.text = "";
+                repairProgress.fillAmount = 0;
+                GameManager.updateAppStatus.Invoke();
                 break;
 
             // All apps
             case 3:
                 Debug.Log("Starting All Apps Repair...");
+                repairText.text = "Repairing All Apps...";
+                repairLong.Play();
 
                 // Wait the time to repair the app
                 t = 0f;
                 while (t < ALL_APP_REPAIR_TIME)
                 {
                     t += Time.deltaTime;
+                    repairProgress.fillAmount = t / ALL_APP_REPAIR_TIME;
                     yield return null;
                 }
 
@@ -108,6 +142,9 @@ public class Maintenance : MonoBehaviour
                 isRepairing = false;
 
                 Debug.Log("All Apps Repaired.");
+                repairText.text = "";
+                repairProgress.fillAmount = 0;
+                GameManager.updateAppStatus.Invoke();
                 break;
 
         }
@@ -156,6 +193,16 @@ public class Maintenance : MonoBehaviour
         else
         {
             SecurityCenterstatusText.text = "<color=#00ffff>Security Center</color> ---- <color=\"red\">Down</color>";
+        }
+
+        // Update warning icon
+        if (!GameManager.isSecurityCenterWorking || !GameManager.isBlackMarketWorking || !GameManager.isTerminalWorking)
+        {
+            warningSign.SetActive(true);
+        }
+        else
+        {
+            warningSign.SetActive(false);
         }
     }
     

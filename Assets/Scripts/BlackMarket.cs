@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using FMODUnity;
 
 public class BlackMarket : MonoBehaviour
 {
@@ -16,6 +17,11 @@ public class BlackMarket : MonoBehaviour
     public TMP_Text debtCostText;
 
     public BalanceText balanceText;
+
+    // Audio
+    public StudioEventEmitter upgradePurchaseSound;
+    public StudioEventEmitter debtPurchaseSound;
+    public StudioEventEmitter invalidPurchaseSound;
 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -51,7 +57,17 @@ public class BlackMarket : MonoBehaviour
             GameManager.bypassCost *= 2;
 
             balanceText.UpdateBalance();
+
+            // Stats for game over
+            GameManager.totalUpgradesPurchased += 1;
+
+            upgradePurchaseSound.Play();
+
             Start();
+        }
+        else
+        {
+            invalidPurchaseSound.Play();
         }
     }
 
@@ -62,7 +78,17 @@ public class BlackMarket : MonoBehaviour
             GameManager.extractCost *= 2;
 
             balanceText.UpdateBalance();
+            
+            // Stats for game over
+            GameManager.totalUpgradesPurchased += 1;
+
+            upgradePurchaseSound.Play();
+
             Start();
+        }
+        else
+        {
+            invalidPurchaseSound.Play();
         }
     }
 
@@ -73,7 +99,17 @@ public class BlackMarket : MonoBehaviour
             GameManager.searchCost *= 2;
 
             balanceText.UpdateBalance();
+            
+            // Stats for game over
+            GameManager.totalUpgradesPurchased += 1;
+
+            upgradePurchaseSound.Play();
+
             Start();
+        }
+        else
+        {
+            invalidPurchaseSound.Play();
         }
     }
 
@@ -86,7 +122,14 @@ public class BlackMarket : MonoBehaviour
             balanceText.UpdateBalance();
             // Reset Timer
             GameManager.paymentTimer = 300;
+
+            debtPurchaseSound.Play();
+
             Start();
+        }
+        else
+        {
+            invalidPurchaseSound.Play();
         }
     }
 

@@ -1,30 +1,35 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
+using FMODUnity;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameObject manager;
-
     public static int balance = 0;
 
     // Upgradable stats related to black market
     public static float paymentTimer = 300;
-    public static int paymentCost = 300;
+    public static int paymentCost = 50;
     public static int numberPayments = 0;
+    public GameObject debtWarningIcon;
 
     public static int bypassLevel = 1;
-    public static int bypassCost = 50;
+    public static int bypassCost = 5;
 
     public static int extractLevel = 1;
-    public static int extractCost = 50;
+    public static int extractCost = 5;
 
     public static int searchLevel = 1;
-    public static int searchCost = 50;
+    public static int searchCost = 10;
 
     // Related to VPN security center
     public static float vpnTimer = 0;
     public static bool forceHackFail = false;
+
+    public GameObject securityWarningSign;
+    public GameObject terminalSecurityWarningSign;
+    public GameObject vpnWarningSign;
+    public GameObject antivirusWarningSign;
 
     // For Antivirus in security center
     public static int numHacksFailed = 0;
@@ -33,6 +38,7 @@ public class GameManager : MonoBehaviour
     public static float moneyDrainInterval = 1;
     public const int HACKS_REQUIRED_FOR_MONEY_DRAIN = 5;
     public static UnityEvent drainMoney = new UnityEvent();
+    public StudioEventEmitter drainMoneySound;
 
     // App status for Maintenance
     public static bool isTerminalWorking = true;
@@ -41,29 +47,67 @@ public class GameManager : MonoBehaviour
     public static UnityEvent updateAppStatus = new UnityEvent();
 
     public static float maintenanceEventTimer = 0;
-    public static float maintenanceEventInterval = 5;
+    public static float maintenanceEventInterval = 35;
+
+    // Audio Manager
+    public GameplayAudioManager gameplayAudioManager;
+
+    // Stats for Game Over
+    public static float totalTimeLasted = 0;
+    public static int totalMoneyEarned = 0;
+    public static int totalSuccessfulBypasses = 0;
+    public static int totalSuccessfulExtracts = 0;
+    public static int totalFailedHacks = 0;
+    public static int totalUpgradesPurchased = 0;
+
+    public GameObject gameOver;
+    public GameObject[] gameOverObjectsToDisable;
 
 
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        if (manager == null)
-        {
-            manager = gameObject;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-    }
+        // Reset all gameplay variables
+        balance = 0;
 
-    public static void SwitchScene(int index)
-    {
-        SceneManager.LoadScene(index);
+        // Upgradable stats related to black market
+        paymentTimer = 300;
+        paymentCost = 50;
+        numberPayments = 0;
+
+        bypassLevel = 1;
+        bypassCost = 5;
+
+        extractLevel = 1;
+        extractCost = 5;
+
+        searchLevel = 1;
+        searchCost = 10;
+
+        // Related to VPN security center
+        vpnTimer = 0;
+        forceHackFail = false;
+
+        // For Antivirus in security center
+        numHacksFailed = 0;
+        moneyDrainAmount = 0;
+        moneyDrainTimer = 0;
+        moneyDrainInterval = 1;
+
+        // App status for Maintenance
+        isTerminalWorking = true;
+        isBlackMarketWorking = true;
+        isSecurityCenterWorking = true;
+
+       maintenanceEventTimer = 0;
+       maintenanceEventInterval = 35;
+
+        // Stats for Game Over
+        totalTimeLasted = 0;
+        totalMoneyEarned = 0;
+        totalSuccessfulBypasses = 0;
+        totalSuccessfulExtracts = 0;
+        totalFailedHacks = 0;
+        totalUpgradesPurchased = 0;
     }
 
 
@@ -73,10 +117,71 @@ public class GameManager : MonoBehaviour
         paymentTimer -= Time.deltaTime;
         vpnTimer += Time.deltaTime;
 
+        // Stats for game over
+        totalTimeLasted += Time.deltaTime;
+
+        if (vpnTimer > 60 || moneyDrainAmount > 0)
+        {
+            securityWarningSign.SetActive(true);
+            terminalSecurityWarningSign.SetActive(true);
+        }
+        else
+        {
+            securityWarningSign.SetActive(false);
+            terminalSecurityWarningSign.SetActive(false);
+        }
+
+        if (vpnTimer > 60)
+        {
+            vpnWarningSign.SetActive(true);
+
+            // Audio changes when VPN fails
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName(gameplayAudioManager.vpnParam, 0);
+        }
+        else
+        {
+            vpnWarningSign.SetActive(false);
+
+            // Audio changes when VPN is back on
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName(gameplayAudioManager.vpnParam, 1);
+        }
+
+        if (moneyDrainAmount > 0)
+        {
+            antivirusWarningSign.SetActive(true);
+
+            // Audio change when virus is active
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName(gameplayAudioManager.alarmParam, 1);
+
+        }
+        else
+        {
+            antivirusWarningSign.SetActive(false);
+
+            // Audio change when virus is no longer active
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName(gameplayAudioManager.alarmParam, 0);
+        }
+
+        // Timer for Audio
+        gameplayAudioManager.UpdateTimerParam();
+
+        // Enable warning when payment is close
+        if (paymentTimer <= 60)
+        {
+            debtWarningIcon.SetActive(true);
+        }
+        else
+        {
+            debtWarningIcon.SetActive(false);
+        }
+
         if (paymentTimer <= 0)
         {
             // Game Ends
             Debug.Log("Game Over!");
+
+            GameOver();
+            return;
         }
 
         // Money Drain
@@ -88,6 +193,7 @@ public class GameManager : MonoBehaviour
                 balance -= moneyDrainAmount;
                 moneyDrainTimer -= moneyDrainInterval;
                 drainMoney.Invoke();
+                drainMoneySound.Play();
             }
         }
 
@@ -106,7 +212,37 @@ public class GameManager : MonoBehaviour
     void MaintenanceEvent()
     {
         // Choose an app to go down
-        int appIndex = Random.Range(0, 4);
+        int appIndex = Random.Range(0, 3);
+        // Debug.Log(appIndex);
+        // Emit the event for chosen app
+        switch(appIndex)
+        {
+            // Terminal
+            case 0:
+                isTerminalWorking = false;
+                updateAppStatus.Invoke();
+                break;
+            // Black Market
+            case 1:
+                isBlackMarketWorking = false;
+                updateAppStatus.Invoke();
+                break;
+            // Security Center
+            case 2:
+                isSecurityCenterWorking = false;
+                updateAppStatus.Invoke();
+                break;
+        }
+    }
 
+    // Game Over
+    void GameOver()
+    {
+        foreach (GameObject obj in gameOverObjectsToDisable)
+        {
+            obj.SetActive(false);
+        }
+
+        gameOver.SetActive(true);
     }
 }

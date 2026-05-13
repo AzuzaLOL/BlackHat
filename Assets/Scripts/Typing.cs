@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
 using System.Collections.Generic;
+using FMODUnity;
 
 public class Typing : MonoBehaviour
 {
@@ -14,6 +15,22 @@ public class Typing : MonoBehaviour
     public InfoPanel infoPanel;
     public ConsoleText consoleText;
     public BalanceText balanceText;
+
+    // Audio - Keyboard
+    public StudioEventEmitter enter_backspace;
+    public StudioEventEmitter space;
+    public StudioEventEmitter key;
+
+    // Audio - Commands
+    public StudioEventEmitter targetEmitter;
+    public StudioEventEmitter bypassSuccess;
+    public StudioEventEmitter bypassFail;
+    public StudioEventEmitter extractSuccess;
+    public StudioEventEmitter extractFail;
+    public StudioEventEmitter search;
+    public StudioEventEmitter invalidCommmand;
+    
+
 
     void Start()
     {
@@ -28,14 +45,30 @@ public class Typing : MonoBehaviour
             {
                 if (currentInput.Length > 0)
                     currentInput = currentInput.Substring(0, currentInput.Length - 1);
+                
+                // Audio
+                enter_backspace.Play();
             }
             else if (c == '\n' || c == '\r') // Enter/Return
             {
                 SubmitInput();
+
+                // Audio
+                enter_backspace.Play();
+            }
+            else if (c == ' ') // Space
+            {
+                currentInput += c;
+                
+                // Audio
+                space.Play();
             }
             else
             {
                 currentInput += c;
+
+                // Audio
+                key.Play();
             }
 
             UpdateDisplay();
@@ -88,6 +121,9 @@ public class Typing : MonoBehaviour
         {
             Debug.Log("Command not found");
             consoleText.AddText("red", "Error: Command not found");
+
+            // Audio - invalid command
+            invalidCommmand.Play();
         }
 
     }
@@ -102,6 +138,9 @@ public class Typing : MonoBehaviour
 
         consoleText.AddText("yellow", "Searching for systems on the network...");
         consoleText.AddText("#7cff73", "System nodes found!");
+
+        // Audio - Search
+        search.Play();
     }
 
     // Target command
@@ -115,6 +154,9 @@ public class Typing : MonoBehaviour
         {
             consoleText.AddText("red", "Targeting failed. Invalid command format");
             consoleText.AddText("yellow", "Command format: 'target <name>'");
+
+            // Audio - Invalid Command
+            invalidCommmand.Play();
             return;
         }
 
@@ -124,6 +166,9 @@ public class Typing : MonoBehaviour
         {
             consoleText.AddText("#7cff73", "Root successfully targeted!");
             infoPanel.SelectNode(terminal.root.GetComponent<SystemNode>());
+
+            // Audio for Targeting
+            targetEmitter.Play();
         }
         // Target other nodes
         else
@@ -137,12 +182,19 @@ public class Typing : MonoBehaviour
                 {
                     infoPanel.SelectNode(node);
                     consoleText.AddText("#7cff73", infoPanel.selectedNode.nodeName + " successfully targeted!");
+
+                    // Audio for Targeting
+                    targetEmitter.Play();
+
                     return;
                 }
             }
 
             consoleText.AddText("red", "Targeting failed. Invalid node name");
             consoleText.AddText("yellow", "Command format: 'target <name>'");
+
+            // Audio - Invalid Command
+            invalidCommmand.Play();
         }
     }
 
@@ -156,12 +208,18 @@ public class Typing : MonoBehaviour
         {
             Debug.Log("Bypass failed. Node already breached!");
             consoleText.AddText("red", "Firewall bypass failed. Node already breached!");
+
+            // Audio - Invalid Command
+            invalidCommmand.Play();
         }
         // Do not bypass if node was already failed
         else if (infoPanel.selectedNode.hackFailed)
         {
             Debug.Log("Bypass failed. Hack already attempted!");
             consoleText.AddText("red", "Bypass failed. Hack already attempted!");
+
+            // Audio - Invalid Command
+            invalidCommmand.Play();
         }
         else
         {
@@ -173,6 +231,9 @@ public class Typing : MonoBehaviour
                 infoPanel.UpdateInfo();
                 consoleText.AddText("#7cff73", infoPanel.selectedNode.nodeName + " successfully bypassed!");
                 infoPanel.selectedNode.Bypass();
+
+                // Audio - Bypass Success
+                bypassSuccess.Play();
             }
             else
             {
@@ -182,6 +243,9 @@ public class Typing : MonoBehaviour
                 // infoPanel.UpdateInfo();
                 consoleText.AddText("#ff0000ff", "Bypassing the firewall from node: " + infoPanel.selectedNode.nodeName + " failed.");
                 infoPanel.selectedNode.FailHack();
+
+                // Audio - Bypass Fail
+                bypassFail.Play();
             }
         }
     }
@@ -192,6 +256,7 @@ public class Typing : MonoBehaviour
         // Calculate if the node is bypassed based on level difference
         // Add defaults to the result lise (default hack chances for equal levels)
         List<bool> resultList = new List<bool>();
+        resultList.Add(true);
         resultList.Add(true);
         resultList.Add(true);
         resultList.Add(false);
@@ -224,18 +289,27 @@ public class Typing : MonoBehaviour
         {
             Debug.Log("Exctraction failed. Node not breached!");
             consoleText.AddText("red", "Extraction failed. Node hasn't been breached!");
+
+            // Audio - Invalid Command
+            invalidCommmand.Play();
         }
         // Do not exctract if the node was already exctracted
         else if (infoPanel.selectedNode.extracted)
         {
             Debug.Log("Exctraction failed. Node already extracted!");
             consoleText.AddText("red", "Extraction failed. Reward already extracted!");
+
+            // Audio - Invalid Command
+            invalidCommmand.Play();
         }
         // Do not extract if node was already failed
         else if (infoPanel.selectedNode.hackFailed)
         {
             Debug.Log("Extraction failed. Hack already attempted!");
             consoleText.AddText("red", "Extraction failed. Hack already attempted!");
+
+            // Audio - Invalid Command
+            invalidCommmand.Play();
         }
         else
         {
@@ -248,6 +322,9 @@ public class Typing : MonoBehaviour
                 consoleText.AddText("#7cff73", "$" + infoPanel.selectedNode.reward + " successfully extracted from " + infoPanel.selectedNode.nodeName);
                 infoPanel.selectedNode.Extract();
                 balanceText.UpdateBalance();
+
+                // Audio - Extract Success
+                extractSuccess.Play();
             }
             else
             {
@@ -257,6 +334,9 @@ public class Typing : MonoBehaviour
                 // infoPanel.UpdateInfo();
                 consoleText.AddText("#ff0000ff", "Extraction of reward from node: " + infoPanel.selectedNode.nodeName + " failed.");
                 infoPanel.selectedNode.FailHack();
+
+                // Audio - Extract Fail
+                extractFail.Play();
             }
 
         }
@@ -267,6 +347,7 @@ public class Typing : MonoBehaviour
         // Calculate if the node is extracted based on level difference
         // Add defaults to the result lise (default hack chances for equal levels)
         List<bool> resultList = new List<bool>();
+        resultList.Add(true);
         resultList.Add(true);
         resultList.Add(true);
         resultList.Add(false);

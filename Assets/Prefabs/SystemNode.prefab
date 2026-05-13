@@ -68,6 +68,7 @@ MonoBehaviour:
   reward: 5
   breached: 0
   extracted: 0
+  hackFailed: 0
   selectedIcon: {fileID: 6121518760755559539}
   isRoot: 0
   nameText: {fileID: 4500448261282288404}
